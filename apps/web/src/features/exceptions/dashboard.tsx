@@ -1,6 +1,4 @@
 import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
-import { Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { localDate, monthAt, roles, statusOf } from "./model";
@@ -110,8 +108,7 @@ export function DashboardScreen() {
 
   return (
     <>
-      <PageTitle title={`${roles[role]} dashboard`} description="Outcomes for sample invoices opened in the selected period."
-        actions={role !== "supplier" && <Link className="spda-link-button" to="/overview"><Sparkles size={16} aria-hidden="true" /> AI overview <ArrowRight size={15} aria-hidden="true" /></Link>} />
+      <PageTitle title={`${roles[role]} dashboard`} description="Outcomes for sample invoices opened in the selected period." />
       <div className="spda-period">
         <label>Time period <select value={period} onChange={event => { setError(""); setPeriod(event.target.value); }}>
           <option value="1">This month</option>

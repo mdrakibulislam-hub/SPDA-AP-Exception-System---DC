@@ -1,0 +1,241 @@
+.spda-assistant-launcher {
+  position: fixed;
+  z-index: 8;
+  inset: auto max(1.25rem, env(safe-area-inset-right)) max(1.25rem, env(safe-area-inset-bottom)) auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 3.6rem;
+  padding: .35rem 1rem .35rem .35rem;
+  border: 1px solid var(--spda-brand);
+  border-radius: 2.5rem;
+  background: var(--spda-brand);
+  color: white;
+  box-shadow: 0 .45rem 1.6rem rgb(19 59 47 / .22);
+  font-weight: 670;
+  font-size: .875rem;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.spda-assistant-launcher:hover {
+  transform: translateY(-.2rem);
+  box-shadow: 0 .65rem 1.75rem rgb(19 59 47 / .26);
+}
+
+.spda-assistant-mascot {
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: 50%;
+  background: #d3ece1;
+}
+
+.spda-assistant-receipt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17%;
+  width: 52%;
+  height: 65%;
+  padding-bottom: 12%;
+  background: white;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 83% 88%, 67% 100%, 50% 88%, 33% 100%, 17% 88%, 0 100%);
+  border-radius: .22rem .22rem 0 0;
+  transform: rotate(-9deg);
+}
+
+.spda-assistant-receipt i {
+  width: 12%;
+  height: 18%;
+  border-radius: 50%;
+  background: var(--spda-rail);
+}
+
+.spda-assistant-receipt b {
+  position: absolute;
+  inset: 52% 34% auto;
+  height: 13%;
+  border-radius: 0 0 1rem 1rem;
+  background: var(--spda-brand);
+}
+
+.spda-assistant-sparkle { position: absolute; inset: 12% 9% auto auto; width: 30%; height: 30%; color: var(--spda-brand); }
+.spda-assistant-mascot[data-small="true"] { inline-size: 1.9rem; block-size: 1.9rem; }
+
+.spda-dialog.spda-assistant-drawer {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  inset: 0 0 0 auto;
+  margin: 0;
+  padding: 0;
+  width: min(100%, 30rem);
+  height: 100dvh;
+  max-width: 100%;
+  max-height: 100dvh;
+  border: 0;
+  border-inline-start: 1px solid var(--spda-line);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: -1rem 0 3rem rgb(20 41 35 / .14);
+  animation: spda-assistant-enter 200ms cubic-bezier(.2, .65, .3, 1);
+}
+
+.spda-dialog.spda-assistant-drawer::backdrop { background: rgb(17 37 30 / .26); }
+
+.spda-assistant-drawer > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  min-height: 4.2rem;
+  padding: .65rem 1.15rem;
+  border-bottom: 1px solid var(--spda-line);
+}
+
+.spda-assistant-log {
+  display: flex;
+  flex-direction: column;
+  gap: .95rem;
+  min-width: 0;
+  min-height: 0;
+  padding: 1.15rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--spda-bg);
+  scrollbar-width: thin;
+}
+
+.spda-assistant-log:focus-visible { outline-offset: -3px; }
+
+.spda-assistant-welcome {
+  display: grid;
+  gap: .45rem;
+  justify-items: start;
+  margin-block: auto;
+  padding: 1.15rem .2rem;
+}
+
+.spda-assistant-welcome .spda-assistant-mascot { margin-bottom: .2rem; }
+.spda-shell .spda-assistant-welcome h3 { font-size: 1.35rem; letter-spacing: -.025em; }
+.spda-assistant-welcome p { max-width: 32ch; color: var(--spda-muted); }
+
+.spda-assistant-message {
+  display: flex;
+  align-items: start;
+  gap: .5rem;
+  min-width: 0;
+  font-size: .875rem;
+}
+
+.spda-assistant-message[data-sender="user"] { justify-content: end; }
+.spda-assistant-bubble {
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--spda-line);
+  border-radius: .2rem .85rem .85rem;
+  padding: .65rem .8rem;
+  background: var(--spda-surface);
+}
+
+.spda-assistant-bubble > p { white-space: pre-wrap; }
+.spda-assistant-message[data-sender="user"] .spda-assistant-bubble {
+  max-width: 92%;
+  border-color: transparent;
+  border-radius: .85rem .2rem .85rem .85rem;
+  background: var(--spda-brand);
+  color: white;
+}
+
+.spda-assistant-cases { display: grid; gap: .5rem; margin-top: .65rem; }
+.spda-assistant-cases[data-numbered="true"] { list-style: decimal; padding-inline-start: 1.3rem; }
+.spda-assistant-cases li + li { border-top: 1px solid var(--spda-line); padding-top: .45rem; }
+.spda-assistant-cases li::marker { color: var(--spda-muted); font-variant-numeric: tabular-nums; }
+.spda-assistant-cases a {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  color: var(--spda-brand);
+  font-weight: 630;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+  overflow-wrap: anywhere;
+}
+
+.spda-assistant-cases p { color: var(--spda-muted); margin-top: .12rem; }
+
+.spda-assistant-review {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: .4rem;
+  padding-top: .75rem;
+  margin-top: .75rem;
+  border-top: 1px solid var(--spda-line);
+}
+
+.spda-assistant-footer {
+  display: grid;
+  gap: .6rem;
+  min-width: 0;
+  padding: .85rem 1.15rem max(.7rem, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--spda-line);
+  background: var(--spda-surface);
+}
+
+.spda-assistant-prompts { display: flex; flex-wrap: wrap; gap: .35rem; }
+
+.spda-shell .spda-assistant-prompts [data-slot="button"] {
+  min-height: 2rem;
+  border-radius: 1.25rem;
+  padding: .25rem .55rem;
+  color: var(--spda-brand);
+  font-size: .76rem;
+  background: var(--spda-surface);
+}
+
+.spda-shell .spda-assistant-prompts [data-slot="button"]:hover { background: var(--spda-tint); }
+
+.spda-assistant-drawer .spda-assistant-composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: .35rem;
+  margin: 0;
+  padding: .4rem;
+  border: 1px solid var(--spda-line);
+  border-radius: .75rem;
+  background: var(--spda-bg);
+}
+
+.spda-assistant-composer:focus-within { border-color: var(--spda-brand); }
+.spda-shell .spda-assistant-drawer .spda-assistant-composer textarea {
+  width: 100%;
+  padding: .34rem;
+  border: 0;
+  background: transparent;
+  font-size: 1rem;
+  resize: none;
+}
+.spda-shell .spda-assistant-drawer .spda-assistant-composer textarea:focus-visible { outline: none; }
+.spda-assistant-footnote { color: var(--spda-muted); font-size: .72rem; text-align: center; }
+
+@keyframes spda-assistant-enter {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 760px) {
+  .spda-shell:has(.spda-assistant-launcher) .spda-content { padding-bottom: 5.5rem; }
+  .spda-assistant-drawer > header, .spda-assistant-log, .spda-assistant-footer { padding-inline: .85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spda-dialog.spda-assistant-drawer { animation: none; }
+  .spda-assistant-launcher { transition: none; }
+}

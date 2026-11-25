@@ -2,6 +2,7 @@ import { Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-route
 import { BookOpen, ChartNoAxesCombined, Inbox, ReceiptText, Sparkles } from "lucide-react";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
+import { WorkspaceAssistant } from "./assistant";
 import { roles, seedCases, statuses, visibleCases, type Invoice, type Role } from "./model";
 import "./workspace.css";
 
@@ -23,7 +24,7 @@ function initialCases() {
   }
 }
 
-interface Workspace {
+export interface Workspace {
   cases: Invoice[];
   visible: Invoice[];
   role: Role;
@@ -89,7 +90,8 @@ export function useWorkspace() {
 }
 
 export function WorkspaceLayout() {
-  const { role, setRole, cases } = useWorkspace();
+  const workspace = useWorkspace();
+  const { role, setRole, cases } = workspace;
   const navigate = useNavigate();
   const pathname = useRouterState({ select: state => state.location.pathname });
   const invoiceId = cases.find(invoice => pathname === `/exceptions/${invoice.id}`)?.id;
@@ -136,6 +138,7 @@ export function WorkspaceLayout() {
           <Outlet />
         </main>
       </div>
+      {role !== "supplier" && <WorkspaceAssistant key={role} workspace={workspace} currentId={invoiceId} />}
     </div>
   );
 }

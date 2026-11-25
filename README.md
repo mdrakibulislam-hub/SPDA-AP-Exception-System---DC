@@ -23,9 +23,11 @@ Drizzle creates `local.db` in the repository root and applies the initial auth s
 
 ## Try the AP prototype
 
-Open the [workspace](http://localhost:3001). Start with **AI overview → Review suggested cases → Route to owners** for the bulk flow, or open **Exceptions → Assigned → Meghna Agro Chemicals** to try backup-owner routing. **Preview as** switches between the AP, approver, controller, and supplier views. The assessment guide is in the workspace navigation.
+Open the [workspace](http://localhost:3001). Select **Ask assistant** to list today’s exceptions, summarize the queue, or get a seven-day recap. In the AP specialist view, try **Suggest routing → Route suggested cases** or type `Route Meghna to the Bangladesh backup owner, then request evidence for Northgate`. Review the draft and apply it to update the cases.
 
-For the prototype alone, `bun run dev:web` is enough after configuring `apps/web/.env`. The role switcher, sample cases, audit history, and uploads use browser storage. Evidence links open in the same browser profile and web origin. The AI overview, drafts, and text checks use local rules. The sign-in and authenticated dashboard still use the API.
+Open **Exceptions → Assigned → Meghna Agro Chemicals** to view its routing history. **Preview as** switches between the AP, approver, controller, and supplier views. The assessment guide is in the workspace navigation.
+
+For the prototype alone, `bun run dev:web` is enough after configuring `apps/web/.env`. The role switcher, sample cases, audit history, and uploads use browser storage. Evidence links open in the same browser profile and web origin. The assistant, AI overview, drafts, and text checks use local rules. The sign-in and authenticated dashboard still use the API.
 
 The original standalone guide and source PDF are in the parent folder. The web app includes the guide text and starts with its own sample state.
 

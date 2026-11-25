@@ -1,8 +1,15 @@
 import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useId, useRef, type ReactNode } from "react";
 
-export function WorkspaceDialog({ title, close, children }: { title: string; close: () => void; children: ReactNode }) {
+export function WorkspaceDialog({ title, close, children, drawer = false, headerAction }: {
+  title: string;
+  close: () => void;
+  children: ReactNode;
+  drawer?: boolean;
+  headerAction?: ReactNode;
+}) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useEffect(() => {
     const element = dialog.current;
     const previous = document.activeElement;
@@ -14,9 +21,9 @@ export function WorkspaceDialog({ title, close, children }: { title: string; clo
   }, []);
 
   return (
-    <dialog ref={dialog} className="spda-dialog" aria-labelledby="workspace-dialog-title"
+    <dialog ref={dialog} className={drawer ? "spda-dialog spda-assistant-drawer" : "spda-dialog"} aria-labelledby={titleId}
       onCancel={event => { event.preventDefault(); close(); }}>
-      <header><h2 id="workspace-dialog-title">{title}</h2></header>
+      <header><h2 id={titleId}>{title}</h2>{headerAction}</header>
       {children}
     </dialog>
   );
