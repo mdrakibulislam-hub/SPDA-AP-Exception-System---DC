@@ -5,7 +5,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
-import { caseActionLabel, caseActionOrder, CaseDialog } from "./case-actions";
+import { caseActionLabel, caseActionOrder, CaseDialog, ReassignInAp } from "./case-actions";
 import { DialogActions, WorkspaceDialog, errorMessage } from "./dialog";
 import { EvidenceLink } from "./evidence";
 import {
@@ -128,10 +128,13 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
   const trigger = useRef<HTMLButtonElement>(null);
   const photo = supplierPhotos[`./suppliers/${invoice.id}.webp`];
   const initials = invoice.supplier.match(/[\p{L}\p{N}]+/gu)?.slice(0, 2).map(word => word[0]).join("").toUpperCase();
-  const quickActions = caseActionOrder.filter(action => allowed(invoice, role, action));
   const showIssue = role !== "supplier";
   const accounting = invoiceAccounting(invoice);
   const cutoff = !invoice.outcome ? approvalCutoff(accounting.period, invoice.entity) : undefined;
+  const isAway = ownerAway(invoice);
+  const needsReassignment = isAway && role !== "ap" && showIssue;
+  const canDecide = allowed(invoice, role, "approve");
+  const quickActions = caseActionOrder.filter(action => action !== "approve" && action !== "reject" && allowed(invoice, role, action));
 
   return <li className="spda-queue-card" data-selected={selected}>
     <div className="spda-queue-identity">
@@ -158,9 +161,10 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
           </p>
           <div className="spda-queue-issue">
             <span className="spda-queue-type" data-risk={paymentRisk(invoice)}>{invoice.type}</span>
-            <p>{invoice.issue}</p>
+            <p>{invoice.type === "Approval delay" && !isAway ? "The original budget owner was unavailable." : invoice.issue}</p>
           </div>
-          {invoice.assignment && <p className="spda-queue-context"><strong>Assigned to</strong> {invoice.assignment.name}{ownerAway(invoice) ? " · away" : ""}</p>}
+          {invoice.assignment && <p className="spda-queue-context"><strong>Assigned to</strong> {invoice.assignment.name}{isAway ? " · away" : ""}</p>}
+          {needsReassignment && <p className="spda-queue-context"><strong>Waiting for AP to reassign</strong></p>}
           {invoice.outcome && <p className="spda-queue-context"><strong>Decision note</strong> {invoice.outcome.note}</p>}
         </>}
       </div>
@@ -168,6 +172,11 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
     <div className="spda-queue-tools">
       <span className="spda-amount"><span className="sr-only">Amount </span>{invoice.amount}</span>
       <div className="spda-queue-card-actions">
+        {needsReassignment && <ReassignInAp invoiceId={invoice.id} />}
+        {canDecide && <>
+          <Button type="button" variant="outline" onClick={event => openAction("reject", event.currentTarget)}>Reject</Button>
+          <Button type="button" onClick={event => openAction("approve", event.currentTarget)}>Approve</Button>
+        </>}
         {quickActions.length > 0 && <DropdownMenu>
           <DropdownMenuTrigger ref={trigger} render={<Button type="button" variant="outline" />} className="spda-queue-quick"
             aria-label={`Quick actions for ${invoice.supplier}`}>
@@ -179,7 +188,7 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
             </DropdownMenuItem>)}
           </DropdownMenuContent>
         </DropdownMenu>}
-        <Link className="spda-link-button" to="/exceptions/$invoiceId" params={{ invoiceId: invoice.id }}
+        <Link className="spda-link-button" data-secondary={canDecide} to="/exceptions/$invoiceId" params={{ invoiceId: invoice.id }}
           aria-label={`View invoice for ${invoice.supplier}`}>
           View <ArrowRight size={15} aria-hidden="true" />
         </Link>
@@ -189,7 +198,7 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
 }
 
 export function QueueScreen({ status }: { status: Status }) {
-  const { role, visible, suggestedIds, setSuggestedIds } = useWorkspace();
+  const { role, visible, suggestedIds, setSuggestedIds, setRole } = useWorkspace();
   const [selected, setSelected] = useState(() => new Set(suggestedIds));
   const [operation, setOperation] = useState<{ action: BulkAction; ids: string[] }>();
   const [quickAction, setQuickAction] = useState<{ id: string; action: Action; trigger: HTMLButtonElement | null }>();
@@ -200,6 +209,7 @@ export function QueueScreen({ status }: { status: Status }) {
   const selectedIds = shown.filter(invoice => selected.has(invoice.id)).map(invoice => invoice.id);
   const allSelected = shown.length > 0 && selectedIds.length === shown.length;
   const title = role === "ap" ? "Exceptions" : role === "supplier" ? "My invoices" : `${roles[role]} queue`;
+  const emptyBudgetQueue = role === "budget" && status === "assigned";
   const actionInvoice = quickAction && visible.find(invoice => invoice.id === quickAction.id);
 
   useEffect(() => {
@@ -248,7 +258,12 @@ export function QueueScreen({ status }: { status: Status }) {
             })}
             openAction={(action, trigger) => setQuickAction({ id: invoice.id, action, trigger })} />)}
         </ul>
-      </section> : <div className="spda-panel spda-empty">No {role === "supplier" ? "invoices" : "exceptions"} in this stage.</div>}
+      </section> : <div className="spda-panel spda-empty">
+        {emptyBudgetQueue ? <>
+          <p>No invoices are waiting for a budget owner. Assign an invoice in the AP queue to start a review.</p>
+          <Link className="spda-link-button" to="/exceptions" search={{ status: "needs" }} onClick={() => setRole("ap")}>Open AP queue</Link>
+        </> : `No ${role === "supplier" ? "invoices" : "exceptions"} in this stage.`}
+      </div>}
       {operation && <BulkDialog action={operation.action} ids={operation.ids} close={() => setOperation(undefined)} done={handleResult} />}
       {quickAction && actionInvoice && <CaseDialog invoice={actionInvoice} action={quickAction.action}
         draft={quickAction.action === "request" ? evidenceDraft(actionInvoice) : undefined}

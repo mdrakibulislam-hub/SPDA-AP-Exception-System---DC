@@ -129,6 +129,18 @@
 .spda-case-facts { display: flex; flex-wrap: wrap; gap: .55rem 1.5rem; padding-block: .55rem; }
 .spda-case-facts dt { color: var(--spda-muted); font-size: .8rem; }
 .spda-case-facts dd { font-weight: 620; }
+.spda-approval-steps { display: flex; flex-wrap: wrap; gap: .6rem; }
+.spda-approval-steps li {
+  display: grid; flex: 1 1 10rem; gap: .1rem;
+  border: 1px solid var(--spda-line); border-radius: .42rem; padding: .55rem .7rem;
+}
+.spda-approval-steps li[data-state="active"] { border-color: var(--spda-brand); }
+.spda-approval-steps li[data-state="active"] > span { color: var(--spda-brand); font-weight: 650; }
+.spda-approval-steps li[data-state="approved"] { background: var(--spda-tint); }
+.spda-approval-steps li[data-state="rejected"] { background: #fbece8; }
+.spda-approval-steps :is(span, small) { font-size: .82rem; color: var(--spda-muted); }
+.spda-decision-effect, .spda-upload-request { padding: .65rem .75rem; border-radius: .42rem; background: var(--spda-tint); font-size: .9rem; }
+.spda-decision-effect, .spda-request-receipt { margin-top: .75rem; }
 .spda-assist { background: var(--spda-tint); }
 .spda-assist summary svg { display: inline; margin-inline: .2rem; vertical-align: -.15em; color: var(--spda-brand); }
 .spda-assist h2 { display: flex; align-items: center; gap: .45rem; }
@@ -160,6 +172,9 @@
 .spda-portal-brand { display: flex; align-items: center; gap: .5rem; font-weight: 670; color: var(--spda-brand); }
 .spda-portal form > * + * { margin-top: .7rem; }
 .spda-portal .spda-assist { padding: .65rem; border-radius: .4rem; }
+.spda-upload-receipt, .spda-upload-file { display: flex; align-items: start; gap: .5rem; overflow-wrap: anywhere; }
+.spda-upload-receipt svg, .spda-upload-file svg { flex-shrink: 0; color: var(--spda-brand); }
+.spda-upload-file { padding: .5rem .65rem; border: 1px solid var(--spda-line); border-radius: .42rem; }
 
 .spda-guide { background: var(--spda-surface); border: 1px solid var(--spda-line); border-radius: var(--spda-radius); padding: clamp(1rem, 4vw, 2.4rem); }
 .spda-guide p { max-width: 76ch; }

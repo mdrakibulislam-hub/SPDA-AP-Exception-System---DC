@@ -16,7 +16,8 @@ export const statuses = {
 export type Role = keyof typeof roles;
 export type Status = keyof typeof statuses;
 type Outcome = "approved" | "rejected";
-type Stage = "budget" | "head" | "controller" | "coverage" | "delegate";
+type ApprovalStep = "budget" | "head" | "controller";
+type Stage = ApprovalStep | "coverage" | "delegate";
 type Entity = "US" | "UK" | "Bangladesh";
 type Issue = "Mismatch" | "Possible duplicate" | "Missing PO" | "Approval delay" | "Bank change";
 export type Recipient = "Supplier" | "Second reviewer";
@@ -126,9 +127,35 @@ const stageRoles: Record<Stage, Role> = {
   budget: "budget", head: "head", controller: "controller", coverage: "controller", delegate: "controller",
 };
 
-const activeRole = (invoice: Invoice) => invoice.assignment && stageRoles[invoice.assignment.stage];
+export const activeRole = (invoice: Invoice) => invoice.assignment && stageRoles[invoice.assignment.stage];
 const entityRole = (invoice: Invoice, role: Role) => `${roles[role]} · ${invoice.entity}`;
 export const ownerAway = (invoice: Invoice) => owners.some(owner => owner.id === invoice.assignment?.owner && !owner.available);
+
+const approvalOrder: readonly ApprovalStep[] = ["budget", "head", "controller"];
+
+function currentApprovalStep(invoice: Invoice): ApprovalStep | undefined {
+  const stage = invoice.assignment?.stage;
+  return stage === "coverage" || stage === "delegate" ? "budget" : stage;
+}
+
+export function nextApprovalStep(invoice: Invoice) {
+  const step = currentApprovalStep(invoice);
+  return step && approvalOrder.slice(0, invoice.band)[approvalOrder.indexOf(step) + 1];
+}
+
+export function approvalProgress(invoice: Invoice): {
+  step: ApprovalStep;
+  state: Outcome | "active" | "stopped" | "pending";
+  assignee?: string;
+}[] {
+  const current = currentApprovalStep(invoice);
+  return approvalOrder.slice(0, invoice.band).map((step, index) => {
+    const decision = invoice.decisions[index];
+    const state = decision?.action === "approve" ? "approved" : decision?.action === "reject" ? "rejected"
+      : step === current ? "active" : invoice.outcome?.status === "rejected" ? "stopped" : "pending";
+    return { step, state, assignee: step === current ? invoice.assignment?.name : undefined };
+  });
+}
 
 export function visibleCases(cases: Invoice[], role: Role, supplierId: string) {
   if (role === "ap" || role === "controller") return cases;
@@ -178,8 +205,7 @@ function recordDecision(invoice: Invoice, role: Role, action: "approve" | "rejec
   log(invoice, action === "approve" ? "Approval recorded" : "Bill rejected", assignment.name, note);
 
   if (action === "approve") {
-    const next = ["budget", "delegate"].includes(assignment.stage) && invoice.band > 1 ? "head"
-      : assignment.stage === "head" && invoice.band > 2 ? "controller" : null;
+    const next = nextApprovalStep(invoice);
     if (next) {
       const name = entityRole(invoice, next);
       invoice.assignment = { stage: next, name };
@@ -197,9 +223,16 @@ export function updateCase(cases: Invoice[], id: string, role: Role, action: Act
   note: string;
   owner?: string;
   recipient: Recipient;
-}) {
+  expectedAssignment?: Invoice["assignment"];
+}): { message: string; requestId?: string } {
   const invoice = cases.find(item => item.id === id);
   if (!invoice || !allowed(invoice, role, action)) throw new Error("The invoice changed. Review its latest stage before continuing.");
+  if ((action === "approve" || action === "reject") && input.expectedAssignment &&
+    (invoice.assignment?.stage !== input.expectedAssignment.stage ||
+      invoice.assignment.owner !== input.expectedAssignment.owner ||
+      invoice.assignment.name !== input.expectedAssignment.name)) {
+    throw new Error("The assignee changed. Close this dialog and review the updated approval before continuing.");
+  }
   const note = input.note.trim();
   const who = role === "ap" ? roles.ap : invoice.assignment?.name ?? entityRole(invoice, role);
   if (action !== "assign" && !note) throw new Error("Enter a reason before continuing.");
@@ -213,26 +246,25 @@ export function updateCase(cases: Invoice[], id: string, role: Role, action: Act
       invoice.assignment = owner ? { stage: "budget", owner: owner.id, name } : { stage: "coverage", name };
       log(invoice, owner ? "Approval requested" : "Controller coverage requested", who,
         `${name}. ${note || (owner ? `Available budget owner in ${invoice.scope}.` : "No available budget owner in the purchase scope.")}`);
-      return owner ? `Approval request recorded for ${name}.` : "Finance now has a coverage request.";
+      return { message: owner ? `Approval request recorded for ${name}.` : "Finance now has a coverage request." };
     }
     case "request":
-      createRequest(invoice, input.recipient, note, who);
-      return "Evidence link created.";
+      return { message: "Evidence link created.", requestId: createRequest(invoice, input.recipient, note, who) };
     case "coverage":
       invoice.assignment = { stage: "delegate", name: `${entityRole(invoice, "controller")} · acting budget owner` };
       log(invoice, "Budget-owner delegation recorded", who, note);
-      return "Coverage recorded. The delegate can now review the bill.";
+      return { message: "Coverage recorded. The delegate can now review the bill." };
     case "phone":
       invoice.bank = "phone";
       log(invoice, "Supplier phone check logged", roles.ap, note);
-      return "Phone check recorded. A second person still needs to approve.";
+      return { message: "Phone check recorded. A second person still needs to approve." };
     case "bank":
       invoice.bank = "confirmed";
       log(invoice, "Bank change approved", entityRole(invoice, "controller"), note);
-      return "Bank change approved in the demo.";
+      return { message: "Bank change approved in the demo." };
     case "approve":
     case "reject":
-      return recordDecision(invoice, role, action, note);
+      return { message: recordDecision(invoice, role, action, note) };
   }
 }
 
@@ -381,12 +413,16 @@ export function applyBulk(rows: BulkRow[], action: BulkAction, recipient: Recipi
 
 const fileTypes: Record<string, string> = { txt: "text/plain", pdf: "application/pdf", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png" };
 
-export async function readProof(file: File, invoice: Invoice): Promise<Proof> {
+export function validateProofFile(file: File) {
   const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
   if (!Object.hasOwn(fileTypes, extension) || !file.size || file.size > 1024 * 1024) {
     throw new Error("Choose a non-empty text, PDF, JPG, or PNG file up to 1 MB.");
   }
-  const type = fileTypes[extension];
+  return fileTypes[extension];
+}
+
+export async function readProof(file: File, invoice: Invoice): Promise<Proof> {
+  const type = validateProofFile(file);
   let review = "Manual review needed. The demo reads text files for automated checks.";
   if (type === "text/plain") {
     const text = (await file.text()).toLowerCase();

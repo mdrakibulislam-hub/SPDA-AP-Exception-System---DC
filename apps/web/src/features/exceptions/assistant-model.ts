@@ -200,7 +200,7 @@ export function applyAssistantReview(cases: Invoice[], role: Role, review: Actio
   return review.actions.map((action, index) => {
     const row = review.rows[index]!;
     if (action.kind === "route") {
-      const detail = updateCase(cases, action.id, role, "assign", { owner: action.ownerId, note: "Routed from the AP assistant.", recipient: "Supplier" });
+      const { message: detail } = updateCase(cases, action.id, role, "assign", { owner: action.ownerId, note: "Routed from the AP assistant.", recipient: "Supplier" });
       return { ...row, detail };
     }
 

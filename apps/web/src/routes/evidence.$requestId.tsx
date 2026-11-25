@@ -3,7 +3,7 @@ import { EvidenceScreen } from "@/features/exceptions/evidence";
 
 export const Route = createFileRoute("/evidence/$requestId")({
   component: EvidenceRoute,
-  head: () => ({ meta: [{ title: "Send supporting evidence · SPDA Supply" }] }),
+  head: () => ({ meta: [{ title: "Upload evidence · SPDA Supply" }] }),
 });
 
 function EvidenceRoute() {

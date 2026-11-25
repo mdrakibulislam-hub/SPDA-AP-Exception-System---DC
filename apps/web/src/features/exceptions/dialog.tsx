@@ -31,10 +31,12 @@ export function WorkspaceDialog({ title, close, children, drawer = false, header
   );
 }
 
-export function DialogActions({ submit, close, disabled = false }: { submit: string; close: () => void; disabled?: boolean }) {
+export function DialogActions({ submit, close, disabled = false, destructive = false }: {
+  submit: string; close: () => void; disabled?: boolean; destructive?: boolean;
+}) {
   return <div className="spda-actions spda-dialog-actions">
     <Button type="button" variant="outline" onClick={close}>Cancel</Button>
-    <Button type="submit" disabled={disabled}>{submit}</Button>
+    <Button type="submit" variant={destructive ? "destructive" : "default"} disabled={disabled}>{submit}</Button>
   </div>;
 }
 

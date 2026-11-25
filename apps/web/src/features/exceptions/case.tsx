@@ -1,19 +1,23 @@
 import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, CircleAlert, Paperclip, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-import { caseActionLabel, caseActionOrder, CaseDialog } from "./case-actions";
+import { caseActionLabel, caseActionOrder, CaseDialog, ReassignInAp } from "./case-actions";
 import { EvidenceLink } from "./evidence";
-import { allowed, evidenceDraft, followUp, nextStep, ownerAway, statusOf, type Action } from "./model";
+import { activeRole, allowed, approvalProgress, evidenceDraft, followUp, nextStep, ownerAway, roles, statusOf, type Action } from "./model";
 import { approvalCutoff, formatCutoff, formatPeriod, invoiceAccounting } from "./month-end";
 import { StatusBadge, useWorkspace } from "./workspace";
 
 const timeFormat = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
+const approvalActions: Action[] = ["coverage", "approve", "reject"];
+const reassignAction = { action: "assign" } as const;
+const stepLabels = { pending: "Pending", active: "Awaiting decision", approved: "Approved", rejected: "Rejected", stopped: "Stopped" };
 
-export function CaseScreen({ invoiceId }: { invoiceId: string }) {
-  const { cases, visible, role } = useWorkspace();
+export function CaseScreen({ invoiceId, reassign, closeReassignment }: { invoiceId: string; reassign?: boolean; closeReassignment: () => void }) {
+  const { cases, visible, role, setRole } = useWorkspace();
   const [dialog, setDialog] = useState<{ action: Action; draft?: string }>();
+  const approvalHeading = useRef<HTMLHeadingElement>(null);
   const invoice = visible.find(item => item.id === invoiceId);
   const supplier = role === "supplier";
   if (!invoice) return <>
@@ -27,6 +31,10 @@ export function CaseScreen({ invoiceId }: { invoiceId: string }) {
   const requests = invoice.requests.filter(request => !supplier || request.recipient === "Supplier");
   const waiting = requests.filter(request => !request.proof).length;
   const canRequest = allowed(invoice, role, "request");
+  const reviewer = activeRole(invoice);
+  const isAway = ownerAway(invoice);
+  const canDecide = allowed(invoice, role, "approve");
+  const currentDialog = dialog ?? (reassign && isAway && allowed(invoice, role, "assign") ? reassignAction : undefined);
   const accounting = invoiceAccounting(invoice);
   const cutoff = !invoice.outcome ? approvalCutoff(accounting.period, invoice.entity) : undefined;
 
@@ -51,12 +59,12 @@ export function CaseScreen({ invoiceId }: { invoiceId: string }) {
       {!supplier && <>
         <section className="spda-panel">
           <h2>Exception details</h2>
-          <p>{invoice.issue}</p>
+          <p>{invoice.type === "Approval delay" && !isAway && <strong>Original issue · </strong>}{invoice.issue}</p>
           <dl className="spda-case-facts">
             <div><dt>Entity</dt><dd>{invoice.entity}</dd></div>
             <div><dt>Exception type</dt><dd>{invoice.type}</dd></div>
             <div><dt>Invoice reading confidence</dt><dd>{invoice.score}</dd></div>
-            {invoice.assignment && <div><dt>Assigned to</dt><dd>{invoice.assignment.name}{ownerAway(invoice) ? " · away" : ""}</dd></div>}
+            {invoice.assignment && <div><dt>Assigned to</dt><dd>{invoice.assignment.name}{isAway ? " · away" : ""}</dd></div>}
           </dl>
           {invoice.type === "Bank change" && <div className="spda-bank-notice">
             <CircleAlert size={17} aria-hidden="true" />
@@ -65,12 +73,40 @@ export function CaseScreen({ invoiceId }: { invoiceId: string }) {
               : "Payment on hold for the bank change."}</span>
           </div>}
           <div className="spda-actions">
-            {caseActionOrder.filter(action => allowed(invoice, role, action)).map(action => (
-              <Button type="button" key={action} variant={["assign", "approve", "coverage"].includes(action) ? "default" : "outline"}
+            {caseActionOrder.filter(action => !approvalActions.includes(action) && !(canDecide && action === "request") &&
+              allowed(invoice, role, action)).map(action => (
+              <Button type="button" key={action} variant={action === "assign" ? "default" : "outline"}
                 onClick={() => setDialog({ action, draft: action === "request" && invoice.outcome?.status === "rejected" ? followUp[invoice.type] : undefined })}>
                 {caseActionLabel(action, invoice)}
               </Button>
             ))}
+          </div>
+        </section>
+        <section className="spda-panel" aria-labelledby="approval-heading">
+          <h2 id="approval-heading" ref={approvalHeading} tabIndex={-1}>Approval workflow</h2>
+          <ol className="spda-approval-steps">
+            {approvalProgress(invoice).map(({ step, state, assignee }) => (
+              <li key={step} aria-current={state === "active" ? "step" : undefined} data-state={state}>
+                <strong>{roles[step]}</strong>
+                <span>{state === "active" && isAway ? "Approver away" : state === "active" && invoice.assignment?.stage === "coverage"
+                  ? "Coverage requested" : stepLabels[state]}</span>
+                {assignee && <small>{assignee}</small>}
+              </li>
+            ))}
+          </ol>
+          {waiting > 0 && <p className="spda-muted">{waiting} evidence {waiting === 1 ? "request is" : "requests are"} waiting for a response.</p>}
+          {isAway && <p className="spda-decision-effect">Approval can continue once AP assigns an available budget owner.</p>}
+          <div className="spda-actions">
+            {isAway && role !== "ap" && <ReassignInAp invoiceId={invoice.id} />}
+            {reviewer && reviewer !== role && !isAway && <Button type="button" variant="outline" onClick={() => setRole(reviewer, invoice.id)}>
+              Preview as {roles[reviewer].toLowerCase()}
+            </Button>}
+            {approvalActions.filter(action => allowed(invoice, role, action)).map(action => (
+              <Button type="button" key={action} variant={action === "reject" ? "outline" : "default"} onClick={() => setDialog({ action })}>
+                {caseActionLabel(action, invoice)}
+              </Button>
+            ))}
+            {canDecide && <Button type="button" variant="outline" onClick={() => setDialog({ action: "request" })}>Request evidence</Button>}
           </div>
         </section>
         <details className="spda-panel spda-assist">
@@ -117,7 +153,10 @@ export function CaseScreen({ invoiceId }: { invoiceId: string }) {
           </li>)}
         </ol>
       </section>}
-      {dialog && <CaseDialog invoice={invoice} action={dialog.action} draft={dialog.draft} close={() => setDialog(undefined)} />}
+      {currentDialog && <CaseDialog invoice={invoice} action={currentDialog.action} draft={dialog?.draft} close={() => {
+        setDialog(undefined);
+        if (reassign) closeReassignment();
+      }} restoreFocus={reassign || approvalActions.includes(currentDialog.action) ? () => approvalHeading.current : undefined} />}
     </>
   );
 }

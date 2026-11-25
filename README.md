@@ -27,6 +27,8 @@ Open the [workspace](http://localhost:3001). Select **Ask assistant** to list to
 
 Open **Exceptions → Assigned → Meghna Agro Chemicals** to view its routing history. **Preview as** switches between the AP, approver, controller, and supplier views. The assessment guide is in the workspace navigation.
 
+In the budget owner view, Meghna is waiting for reassignment because Farhana is away. Select **Reassign in AP**, send the request to the suggested backup owner, and select **Preview as budget owner**. **Approve** and **Reject** are available on the case and in **My approvals** once the current reviewer can act. Both decisions ask for a reason and record it in the timeline. **Request evidence** creates a link you can open immediately. Choose a file or use **Use sample file** to try the upload in the same browser.
+
 For the prototype alone, `bun run dev:web` is enough after configuring `apps/web/.env`. The role switcher, sample cases, audit history, and uploads use browser storage. Evidence links open in the same browser profile and web origin. The assistant, AI overview, drafts, and text checks use local rules. The sign-in and authenticated dashboard still use the API.
 
 The original standalone guide and source PDF are in the parent folder. The web app includes the guide text and starts with its own sample state.

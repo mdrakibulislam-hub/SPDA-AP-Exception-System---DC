@@ -113,6 +113,8 @@
 
 .spda-queue-tools .spda-amount { font-size: 1rem; font-weight: 680; }
 .spda-queue-card-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: .4rem; }
+.spda-queue-card-actions [data-secondary="true"] { background: var(--spda-surface); border-color: var(--spda-line); color: var(--spda-brand); }
+.spda-queue-card-actions [data-secondary="true"]:hover { background: var(--spda-tint); }
 
 .spda-queue-menu[data-slot="dropdown-menu-content"] {
   width: max-content;
