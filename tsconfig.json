@@ -1,0 +1,3 @@
+{
+  "extends": "@SPDA-AP-Exception-System---DC/config/tsconfig.base.json"
+}

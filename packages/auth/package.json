@@ -1,0 +1,23 @@
+{
+  "name": "@SPDA-AP-Exception-System---DC/auth",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@SPDA-AP-Exception-System---DC/db": "workspace:*",
+    "@better-auth/core": "1.7.22",
+    "@better-auth/drizzle-adapter": "1.7.22",
+    "better-auth": "catalog:",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@SPDA-AP-Exception-System---DC/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

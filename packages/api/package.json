@@ -1,0 +1,22 @@
+{
+  "name": "@SPDA-AP-Exception-System---DC/api",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@SPDA-AP-Exception-System---DC/auth": "workspace:*",
+    "@SPDA-AP-Exception-System---DC/db": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@SPDA-AP-Exception-System---DC/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
