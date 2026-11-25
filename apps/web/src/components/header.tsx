@@ -1,7 +1,12 @@
 import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
 import { ModeToggle } from "./mode-toggle";
 import UserMenu from "./user-menu";
+
+export function AccountShell({ children }: { children: ReactNode }) {
+  return <div className="grid grid-rows-[auto_1fr] h-svh"><Header />{children}</div>;
+}
 
 export default function Header() {
   const links = [

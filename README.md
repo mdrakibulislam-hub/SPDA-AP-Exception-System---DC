@@ -19,7 +19,15 @@ bun run db:migrate
 bun run dev
 ```
 
-Drizzle creates `local.db` in the repository root and applies the initial auth schema. Open the [web app](http://localhost:3001) to check the API connection or sign up with email and password. The [API](http://localhost:3000) serves tRPC under `/trpc` and Better Auth under `/api/auth`.
+Drizzle creates `local.db` in the repository root and applies the initial auth schema. The [API](http://localhost:3000) serves tRPC under `/trpc` and Better Auth under `/api/auth`.
+
+## Try the AP prototype
+
+Open the [workspace](http://localhost:3001). Start with **AI overview → Review suggested cases → Route to owners** for the bulk flow, or open **Exceptions → Assigned → Meghna Agro Chemicals** to try backup-owner routing. **Preview as** switches between the AP, approver, controller, and supplier views. The assessment guide is in the workspace navigation.
+
+For the prototype alone, `bun run dev:web` is enough after configuring `apps/web/.env`. The role switcher, sample cases, audit history, and uploads use browser storage. Evidence links open in the same browser profile and web origin. The AI overview, drafts, and text checks use local rules. The sign-in and authenticated dashboard still use the API.
+
+The original standalone guide and source PDF are in the parent folder. The web app includes the guide text and starts with its own sample state.
 
 ## Workspace layout
 

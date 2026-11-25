@@ -1,5 +1,6 @@
 import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 
+import { AccountShell } from "@/components/header";
 import { authClient } from "@/lib/auth-client";
 
 export const Route = createFileRoute("/_auth")({
@@ -16,5 +17,5 @@ export const Route = createFileRoute("/_auth")({
 });
 
 function AuthLayout() {
-  return <Outlet />;
+  return <AccountShell><Outlet /></AccountShell>;
 }

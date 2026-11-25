@@ -1,11 +1,11 @@
 import { Toaster } from "@SPDA-AP-Exception-System---DC/ui/components/sonner";
 import type { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { HeadContent, Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import { HeadContent, Outlet, createRootRouteWithContext, useRouterState } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { WorkspaceProvider } from "@/features/exceptions/workspace";
 import type { trpc } from "@/utils/trpc";
 
 import "../index.css";
@@ -20,23 +20,19 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
   head: () => ({
     meta: [
       {
-        title: "SPDA-AP-Exception-System---DC",
+        title: "SPDA Supply · Accounts payable",
       },
       {
         name: "description",
-        content: "SPDA-AP-Exception-System---DC is a web application",
-      },
-    ],
-    links: [
-      {
-        rel: "icon",
-        href: "/favicon.ico",
+        content: "Review, route, and resolve sample accounts payable invoice exceptions.",
       },
     ],
   }),
 });
 
 function RootComponent() {
+  const pathname = useRouterState({ select: state => state.location.pathname });
+  const accountPage = pathname === "/login" || pathname === "/dashboard";
   return (
     <>
       <HeadContent />
@@ -46,14 +42,13 @@ function RootComponent() {
         disableTransitionOnChange
         storageKey="vite-ui-theme"
       >
-        <div className="grid grid-rows-[auto_1fr] h-svh">
-          <Header />
-          <Outlet />
-        </div>
+        <WorkspaceProvider><Outlet /></WorkspaceProvider>
         <Toaster richColors />
       </ThemeProvider>
-      <TanStackRouterDevtools position="bottom-left" />
-      <ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
+      {import.meta.env.DEV && accountPage && <>
+        <TanStackRouterDevtools position="bottom-left" />
+        <ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
+      </>}
     </>
   );
 }

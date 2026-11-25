@@ -1,0 +1,68 @@
+<header>
+  <p>DataCrunch design exercise</p>
+  <h1 id="roles-title">Who checks and approves a bill?</h1>
+  <p>The AP specialist finds out why a bill is stuck. The people who can give the OK depend on how much the bill is for and whether there’s a purchase order.</p>
+</header>
+
+<div class="page-body">
+  <section id="approval-hierarchy">
+    <h2>Approval hierarchy</h2>
+    <p>As a bill crosses each amount limit, another person must say yes. Amounts are in US dollars or the equivalent in another currency.</p>
+    <ul class="approval-levels" role="list">
+      <li class="card">
+        <h3>Under $5,000</h3>
+        <ul>
+          <li>Budget owner</li>
+        </ul>
+      </li>
+      <li class="card">
+        <h3>$5,000 to $50,000</h3>
+        <ul>
+          <li>Budget owner</li>
+          <li>Department head</li>
+        </ul>
+      </li>
+      <li class="card">
+        <h3>Over $50,000</h3>
+        <ul>
+          <li>Budget owner</li>
+          <li>Department head</li>
+          <li>Finance controller</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="callout"><strong>No purchase order?</strong> The budget owner must always approve. Any additional approvals for that amount still apply.</p>
+    <p class="source">The brief names who must approve and leaves the order open. <span>Original brief, page 2</span></p>
+  </section>
+
+  <section>
+    <h2>What each person can do</h2>
+    <dl class="rules">
+      <div><dt>AP specialist<br><span class="muted">Bill checker</span></dt><dd>Checks why the bill is stuck. They compare what was billed, what the company ordered, and what arrived. They can gather evidence and send the bill to the right approvers.</dd></div>
+      <div><dt>Budget owner<br><span class="muted">Manager in charge of the money</span></dt><dd>Gives the OK to spend money from their budget. This is the only approval listed for bills under $5,000.</dd></div>
+      <div><dt>Department head<br><span class="muted">Person who leads the team</span></dt><dd>Adds their approval for bills of $5,000 or more. For example, if Operations bought the parts, the Operations Director might be the department head.</dd></div>
+      <div><dt>Finance controller<br><span class="muted">Finance lead</span></dt><dd>Adds their approval for bills over $50,000. Each of SPDA’s three legal entities has a controller. They enforce finance rules, review the record of changes and decisions, and track what’s holding up the end-of-month accounts.</dd></div>
+      <div><dt>Supplier<br><span class="muted">Company that sent the bill</span></dt><dd>Can answer questions about their bill. If your design includes a supplier view, it can show where their own bill stands and when they can expect payment.</dd></div>
+    </dl>
+    <p class="source"><span>Original brief, pages 1–2</span></p>
+  </section>
+
+  <section>
+    <h2>Example from the brief</h2>
+    <div class="callout">
+      <h3>Vantage Industrial Components · $96,400</h3>
+      <p>Vantage emailed new bank details. Because the bill is over $50,000, the budget owner, department head, and finance controller all have to approve.</p>
+      <p>The bank change has its own check. One person calls a supplier contact SPDA already knows. A second person approves the change before anyone pays using those details.</p>
+    </div>
+    <p class="source"><span>Sample bill, page 3</span></p>
+  </section>
+
+  <section>
+    <h2>What you get to decide</h2>
+    <ul>
+      <li>Who can fix details that the AI read wrong and who can see those changes. Every change or decision must record who did it, when, and why.</li>
+      <li>How approval requests are sent and what happens when the assigned approver is away.</li>
+      <li>Which roles make the bank verification call and approve the change. The brief requires two different people.</li>
+    </ul>
+  </section>
+</div>

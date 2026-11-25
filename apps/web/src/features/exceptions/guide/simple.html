@@ -1,0 +1,69 @@
+<header>
+  <p>DataCrunch design exercise</p>
+  <h1 id="simple-title">Help a team fix bills that get stuck</h1>
+  <p>SPDA Supply buys parts from other companies. Those companies are called suppliers. They send bills that say what SPDA owes. Your job is to design a tool that helps SPDA check bills with problems before anyone pays them.</p>
+</header>
+
+<div class="page-body">
+  <section>
+    <h2>Why would a bill get stuck?</h2>
+    <p>Imagine a supplier sends a bill for <strong>60 parts</strong>. SPDA’s delivery record shows that only <strong>40 parts arrived</strong>. The computer spots the gap and flags the bill. A worker has to find out what happened to the other 20 parts before the bill can move forward.</p>
+    <p>The brief calls the bill an <strong>invoice</strong>. The list of what SPDA ordered is a <strong>purchase order</strong>, or PO. The record of what arrived is a <strong>goods receipt</strong>. An <strong>exception</strong> is a bill that needs a person’s help.</p>
+    <p>Most bills pass the computer’s checks. About <strong>880 bills a month</strong> need help. Staff use a shared inbox and a spreadsheet to sort them out today. SPDA wants to cut the average wait from <strong>9 days to 3</strong> and stop wrong payments.</p>
+  </section>
+
+  <section>
+    <h2>Who does what?</h2>
+    <ul>
+      <li><strong>Bill checker (AP specialist).</strong> Looks into the problem and gets the bill to the right person.</li>
+      <li><strong>Manager (approver).</strong> Gives permission when a bill needs sign-off. They often do this on their phone.</li>
+      <li><strong>Finance lead (controller).</strong> Makes sure safety rules are followed and checks what’s holding up the end-of-month accounts.</li>
+      <li><strong>Supplier.</strong> Wants to know if their bill is still being checked and when they’ll be paid.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What should your design show?</h2>
+    <p>Pick who to design for first. One easy place to start is with the bill checker. Show how they find a stuck bill, see what’s wrong, ask for help if needed, and learn what happened next. Show how a manager or supplier takes part too.</p>
+    <p>Draw the steps. Label who can do what and what the tool needs to save. Use labels like <strong>Waiting for a manager</strong> so people know why a bill is still stuck. Show what happens if the manager is away or the company’s records fail to update.</p>
+    <p>AI can read the bill and show how sure it is about each detail. People still check risky changes. For example, if a supplier gives new bank details, someone must call a contact the company already knows. A second person must say yes before anyone pays using those details.</p>
+    <details>
+      <summary>More rules in simple words</summary>
+      <ul>
+        <li>The price can differ by up to 2%. The number of parts has to match exactly.</li>
+        <li>For bills under $5,000, the person in charge of the budget gives the OK. From $5,000 to $50,000, the head of the department must also say yes. Above $50,000, the finance lead must say yes too. Use the same limits in other currencies. A bill with no purchase order always needs the budget owner’s OK.</li>
+        <li>For Bangladesh, the finance team sets how much tax to hold back for each kind of service.</li>
+        <li>If a bill still needs approval on the third working day of the next month, it moves to the next set of monthly accounts.</li>
+        <li>Save who made each change or decision, when they did it, and why.</li>
+        <li>Build around the finance system the company already uses. It updates every 15 minutes, but updates can fail. Managers use a web page on their phone. The tool should also work with a keyboard and tools that read the screen out loud.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section>
+    <h2>What do you hand in?</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>1. A Figma link</h3>
+        <p>Let the reviewers leave comments. Make four pages.</p>
+        <ol>
+          <li><strong>Cover.</strong> Your name, the date, a list of the pages, and a short dated list of key decisions.</li>
+          <li><strong>Thinking.</strong> Draw the steps and show where people get stuck today. Say what you assumed, what the tool keeps track of, and who can do what.</li>
+          <li><strong>Core flow.</strong> Make <strong>3–5 rough screens</strong>, each <strong>1440 pixels wide</strong>. Use only the sample data in the brief. Show what a manager or supplier does in the flow.</li>
+          <li><strong>Prototype.</strong> Pick one screen and make every button and box work. Show what happens when someone hovers, uses the keyboard, clicks, or types. Show when a button can’t be used or something goes wrong. Build this screen yourself <strong>without AI</strong>.</li>
+        </ol>
+      </article>
+      <article class="card">
+        <h3>2. A short write-up (README)</h3>
+        <p>Send a PDF or Markdown file of <strong>800 words or fewer</strong>.</p>
+        <p>Explain the problem, what you assumed, who you focused on, and what you kept or skipped. Explain your three hardest choices and why you made them.</p>
+        <p>Say what AI can do, what people must decide, what could go wrong, what questions remain, what you would test first, and how you’d tell if your design helped. Include how long you worked and where you used AI.</p>
+      </article>
+    </div>
+    <div class="callout">
+      <h3>When and how to send it</h3>
+      <p>Spend <strong>3–4 hours</strong> and stop at 4. Reply to the email that came with the brief. Send your Figma link and your write-up. The brief says to send it within three calendar days and gives <strong><time datetime="2026-11-29">Sunday, 29 November 2026</time></strong> as the deadline.</p>
+    </div>
+    <p class="source">At the one-hour review, you’ll show your work in Figma, explain your choices, and talk through a change the team gives you. <a href="/guide?view=detailed">Back to the detailed guide</a></p>
+  </section>
+</div>

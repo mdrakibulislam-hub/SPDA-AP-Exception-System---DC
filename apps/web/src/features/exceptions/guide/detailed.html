@@ -1,0 +1,127 @@
+<header>
+  <p>DataCrunch · Senior Product Designer assessment</p>
+  <h1 id="guide-title">The assessment in plain English</h1>
+  <p>Design a first version of a tool that helps SPDA Supply’s finance team fix supplier invoices that get stuck, so they can pay the right supplier the right amount sooner.</p>
+</header>
+
+<dl class="summary">
+  <div><dt>Submit</dt><dd>Figma link + short README</dd></div>
+  <div><dt>Time box</dt><dd>3–4 hours. Stop at 4.</dd></div>
+  <div><dt>Written deadline</dt><dd><time datetime="2026-11-29">Sunday, 29 November 2026</time></dd></div>
+</dl>
+
+<nav aria-label="In this guide">
+  <ul>
+    <li><a href="#deliver">What to deliver</a></li>
+    <li><a href="#system">How the system works</a></li>
+    <li><a href="#rules">Rules to keep</a></li>
+    <li><a href="#start">Where to start</a></li>
+    <li><a href="#review">Submission and review</a></li>
+  </ul>
+</nav>
+
+<div class="page-body">
+  <section id="deliver">
+    <h2>What to deliver</h2>
+    <p>They weight the assessment roughly <strong>75% UX and product thinking</strong> and <strong>25% UI execution</strong>. Keep it low fidelity and go deep on one workflow. You can skip user research, a full design system, and screens outside your chosen scope.</p>
+    <div class="grid">
+      <article class="card">
+        <h3>1. One Figma file</h3>
+        <p>Share a view link with comment access. Make these four pages.</p>
+        <ol>
+          <li><strong>Cover.</strong> Your name, date, what’s on each page, and a short dated log of important decisions.</li>
+          <li><strong>Thinking.</strong> The problem, assumptions, and end-to-end flow across roles with today’s pain points. Show the records the system tracks, their statuses, and who can see or do what.</li>
+          <li><strong>Core flow.</strong> Use the PDF’s sample data in <strong>3–5 key screens at 1440 px wide</strong>. Show how an approver or supplier takes part as the second role.</li>
+          <li><strong>Prototype.</strong> Make <strong>one screen</strong> from that flow fully interactive in Figma, by hand and without AI tools. Every control should work. Include clicks, inputs, hover, focus, pressed, disabled and error states, and transitions as applicable.</li>
+        </ol>
+        <p class="source muted">Use your own component assets, name frames and layers clearly, and mark the final frames.</p>
+      </article>
+
+      <article class="card">
+        <h3>2. One short README</h3>
+        <p>Use Markdown or PDF, <strong>800 words maximum</strong>. Cover these points.</p>
+        <ul>
+          <li>The problem and your key assumptions.</li>
+          <li>Who you prioritized and why.</li>
+          <li>What you designed, what you left out, and why.</li>
+          <li>Your three biggest trade-offs.</li>
+          <li>What automation and AI do, and where people decide.</li>
+          <li>Risks, open questions, and what you’d validate first.</li>
+          <li>How you’d measure success.</li>
+          <li>Time spent and where and how you used AI tools.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="source"><span>Original brief, pages 3–4</span></p>
+  </section>
+
+  <section id="system">
+    <h2>How the system works</h2>
+    <p>This is an <strong>accounts payable (AP) invoice exception workflow</strong>. Accounts payable is the team that handles bills from suppliers. An <strong>exception</strong> is a bill someone needs to investigate or approve before it can move forward. About 880 of 4,000 invoices get stuck each month across the US, UK, and Bangladesh.</p>
+    <ol>
+      <li><strong>Read and compare.</strong> AI reads the supplier’s invoice. The existing process compares what the supplier billed with what SPDA ordered (the <strong>purchase order</strong> or PO) and what arrived (the <strong>goods receipt</strong>).</li>
+      <li><strong>Match or flag.</strong> About 78% match and are posted automatically to the existing finance system (the <strong>ERP</strong>). The other 22% need human attention.</li>
+      <li><strong>Investigate and decide.</strong> Today AP specialists work from a shared inbox and spreadsheet, re-enter data in the ERP, and chase approvals by email. Your proposed flow should show how they find the issue, gather evidence, and get a decision from the right person.</li>
+      <li><strong>Move forward or stay on hold.</strong> The ERP remains the official record for orders, receipts, and payments. Show how people can tell where an exception stands, including when a decision, new evidence, or an ERP update is still pending.</li>
+    </ol>
+    <div class="callout">
+      <h3>Example from the brief</h3>
+      <p>Northgate Packaging’s invoice <strong>88213</strong> bills for 60 units, but the receipt covers 40. The AI score is 0.97, so it read the invoice with high confidence. An AP specialist still needs to investigate the 20-unit gap because quantities must match exactly.</p>
+    </div>
+    <p class="source"><span>Original brief, pages 1–3</span></p>
+  </section>
+
+  <section id="rules">
+    <h2>Rules your design must respect</h2>
+    <table>
+      <caption class="muted">Approval requirements by invoice amount (USD or equivalent)</caption>
+      <thead><tr><th scope="col">Amount or condition</th><th scope="col">Who must approve</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Under $5,000</th><td>Budget owner</td></tr>
+        <tr><th scope="row">$5,000 to $50,000</th><td>Budget owner and department head</td></tr>
+        <tr><th scope="row">Over $50,000</th><td>Budget owner, department head, and controller</td></tr>
+        <tr><th scope="row">Any invoice without a PO</th><td>Always requires the budget owner</td></tr>
+      </tbody>
+    </table>
+
+    <dl class="rules">
+      <div><dt>Matching</dt><dd>Price must match within 2%. Quantity must match exactly.</dd></div>
+      <div><dt>Bangladesh tax</dt><dd>Use the withholding rate finance sets for the service category.</dd></div>
+      <div><dt>New bank details</dt><dd>Call a known supplier contact to verify the change. A second person must approve it before payment uses the new details.</dd></div>
+      <div><dt>Month-end cutoff</dt><dd>Invoices still unapproved by the third working day of the next month move to the next period.</dd></div>
+      <div><dt>Audit history</dt><dd>Every field change and decision must record who did it, when, and why.</dd></div>
+      <div><dt>ERP and AI</dt><dd>The ERP syncs every 15 minutes and sometimes fails. AI provides a confidence score from 0 to 1 per field. You decide how to use the scores and work with the existing model.</dd></div>
+      <div><dt>Approver access</dt><dd>Use responsive web with email or push notifications. Approvers typically use their phones and won’t install a new app.</dd></div>
+      <div><dt>Accessibility and scope</dt><dd>Plan for WCAG 2.2 AA. Phase 1 has one quarter, two React frontend engineers, one backend engineer, and one product manager.</dd></div>
+    </dl>
+    <p class="source"><span>Original brief, pages 2–3</span></p>
+  </section>
+
+  <section id="start">
+    <h2>One way to scope Phase 1</h2>
+    <p><strong>Start with the AP specialist and use the budget approver as the second role.</strong> The specialist handles the queue all day on a desktop. The approver makes occasional decisions, often on a phone. Controllers care about audit and month-end close, and suppliers want to know when they’ll be paid. Show where those roles fit in your flow and choose how much of their experience to design.</p>
+    <p><strong>Follow one invoice all the way through.</strong> You could focus on a price or quantity mismatch, which makes up 41% of exceptions. Show the specialist finding the problem, comparing the evidence, resolving it or routing it to the right person, and seeing the result. Choose a case that makes the second role’s contribution clear.</p>
+    <p><strong>Write down what the tool needs to track.</strong> For example, link an invoice to its exception and any approval request. Give the exception statuses like “Needs review” and “Waiting for evidence,” and say who can move it forward. Think through what happens when an approver is away or the ERP fails to sync.</p>
+    <p><strong>Decide where to save clicks.</strong> The AP lead wants faster bulk work. The controller needs decisions and edits to remain auditable, with approval and bank verification rules enforced.</p>
+    <h3>Business goals to measure</h3>
+    <ul>
+      <li>Average time to resolve an exception drops from <strong>9 days to 3</strong>.</li>
+      <li>Duplicate or fraudulent payments drop to <strong>zero</strong>. Last quarter there were two duplicates totaling $38,400.</li>
+      <li>Month-end close drops from <strong>8 to 5 working days</strong>.</li>
+      <li>Supplier status inquiries fall from about <strong>300 to 150 per month</strong>.</li>
+    </ul>
+    <div class="callout">
+      <h3>The brief’s suggested 4-hour plan</h3>
+      <p>20 min framing and assumptions · 85 min flows and structure · 50 min core screens · 45 min prototype · 20 min README · 20 min buffer.</p>
+    </div>
+    <p class="source"><span>Sample invoices and challenge, page 3</span></p>
+  </section>
+
+  <section id="review">
+    <h2>Submission and review</h2>
+    <p><strong>Reply to the original email</strong> with the Figma view link (comments enabled) and the README. The brief gives a three-calendar-day submission window from receipt and lists <strong>Sunday, 29 November 2026</strong> as the deadline.</p>
+    <p>Use only the supplied sample data. You can use AI elsewhere in the exercise and should disclose where and how you used it in the README. Build the prototype screen yourself without AI tools.</p>
+    <p>The <strong>60-minute in-person review</strong> includes a 20-minute walkthrough in Figma and a prototype demo, 25 minutes on decisions and how you built the prototype, and 15 minutes to discuss a new requirement on the spot.</p>
+    <p class="source"><span>Original brief, pages 4–5</span></p>
+  </section>
+</div>
