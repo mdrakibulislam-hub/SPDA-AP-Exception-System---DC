@@ -12,6 +12,7 @@ import {
   allowed, applyBulk, bulkKey, evidenceDraft, ownerAway, paymentRisk, planBulk, roles, statuses, statusOf,
   type Action, type BatchResult, type BulkAction, type BulkRow, type Invoice, type Recipient, type Role, type Status,
 } from "./model";
+import { approvalCutoff, formatCutoff, formatPeriod, invoiceAccounting } from "./month-end";
 import { useWorkspace } from "./workspace";
 import "./queue.css";
 
@@ -129,6 +130,8 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
   const initials = invoice.supplier.match(/[\p{L}\p{N}]+/gu)?.slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const quickActions = caseActionOrder.filter(action => allowed(invoice, role, action));
   const showIssue = role !== "supplier";
+  const accounting = invoiceAccounting(invoice);
+  const cutoff = !invoice.outcome ? approvalCutoff(accounting.period, invoice.entity) : undefined;
 
   return <li className="spda-queue-card" data-selected={selected}>
     <div className="spda-queue-identity">
@@ -147,6 +150,12 @@ function QueueCard({ invoice, role, selected, select, openAction }: {
           <span>{invoice.entity}</span>
         </p>
         {showIssue && <>
+          <p className="spda-queue-meta">
+            {accounting.period === accounting.originalPeriod
+              ? <span>Accounting period · {formatPeriod(accounting.period)}</span>
+              : <span className="spda-queue-type">Moved to {formatPeriod(accounting.period)}</span>}
+            {cutoff && <span>Approve by <time dateTime={cutoff}>{formatCutoff(cutoff)}</time></span>}
+          </p>
           <div className="spda-queue-issue">
             <span className="spda-queue-type" data-risk={paymentRisk(invoice)}>{invoice.type}</span>
             <p>{invoice.issue}</p>

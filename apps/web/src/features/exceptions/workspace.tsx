@@ -1,9 +1,12 @@
 import { Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { BookOpen, ChartNoAxesCombined, Inbox, ReceiptText, Sparkles } from "lucide-react";
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useEffectEvent, useState, type ReactNode } from "react";
+import { toast } from "sonner";
 
 import { WorkspaceAssistant } from "./assistant";
+import { errorMessage } from "./dialog";
 import { roles, seedCases, statuses, visibleCases, type Invoice, type Role } from "./model";
+import { applyMonthEnd } from "./month-end";
 import "./workspace.css";
 
 const storageKey = "spda-workspace-v1";
@@ -24,6 +27,20 @@ function initialCases() {
   }
 }
 
+function saveCases(cases: Invoice[]) {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(cases));
+  } catch {
+    throw new Error("The browser could not save this change. Check the available storage and try again.");
+  }
+}
+
+function withWorkspaceLock<T>(transaction: () => T) {
+  return navigator.locks
+    ? navigator.locks.request(storageKey, transaction)
+    : Promise.resolve().then(transaction);
+}
+
 export interface Workspace {
   cases: Invoice[];
   visible: Invoice[];
@@ -42,31 +59,43 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
   const [supplierId, setSupplierId] = useState("vantage");
   const [suggestedIds, setSuggestedIds] = useState<string[]>([]);
 
+  const refreshPeriods = useEffectEvent(() => {
+    void withWorkspaceLock(() => {
+      const draft = readCases() ?? structuredClone(cases);
+      if (applyMonthEnd(draft)) {
+        saveCases(draft);
+        setCases(draft);
+      }
+    }).catch(error => toast.error(errorMessage(error), { id: "month-end-close" }));
+  });
+
   useEffect(() => {
     const sync = (event: StorageEvent) => {
       if (event.key === storageKey) setCases(initialCases());
     };
+    const refresh = () => refreshPeriods();
+    refresh();
+    const timer = window.setInterval(refresh, 60_000);
     window.addEventListener("storage", sync);
-    return () => window.removeEventListener("storage", sync);
+    window.addEventListener("focus", refresh);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("storage", sync);
+      window.removeEventListener("focus", refresh);
+    };
   }, []);
 
   function commit<T>(change: (draft: Invoice[]) => T) {
-    const transaction = () => {
+    return withWorkspaceLock(() => {
       const latest = readCases();
       if (latest) setCases(latest);
       const draft = structuredClone(latest ?? cases);
       const result = change(draft);
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(draft));
-      } catch {
-        throw new Error("The browser could not save this change. Check the available storage and try again.");
-      }
+      applyMonthEnd(draft);
+      saveCases(draft);
       setCases(draft);
       return result;
-    };
-    return navigator.locks
-      ? navigator.locks.request(storageKey, transaction)
-      : Promise.resolve().then(transaction);
+    });
   }
 
   return (

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { caseActionLabel, caseActionOrder, CaseDialog } from "./case-actions";
 import { EvidenceLink } from "./evidence";
 import { allowed, evidenceDraft, followUp, nextStep, ownerAway, statusOf, type Action } from "./model";
+import { approvalCutoff, formatCutoff, formatPeriod, invoiceAccounting } from "./month-end";
 import { StatusBadge, useWorkspace } from "./workspace";
 
 const timeFormat = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
@@ -26,6 +27,8 @@ export function CaseScreen({ invoiceId }: { invoiceId: string }) {
   const requests = invoice.requests.filter(request => !supplier || request.recipient === "Supplier");
   const waiting = requests.filter(request => !request.proof).length;
   const canRequest = allowed(invoice, role, "request");
+  const accounting = invoiceAccounting(invoice);
+  const cutoff = !invoice.outcome ? approvalCutoff(accounting.period, invoice.entity) : undefined;
 
   return (
     <>
@@ -37,7 +40,13 @@ export function CaseScreen({ invoiceId }: { invoiceId: string }) {
           <div><dt>Invoice number</dt><dd>{invoice.ref}</dd></div>
           <div><dt>Amount</dt><dd>{invoice.amount}</dd></div>
           <div><dt>Status</dt><dd><StatusBadge status={status} /></dd></div>
+          {!supplier && <>
+            <div><dt>Accounting period</dt><dd>{formatPeriod(accounting.period)}</dd></div>
+            {cutoff && <div><dt>Approval cutoff</dt><dd><time dateTime={cutoff}>{formatCutoff(cutoff)}</time></dd></div>}
+          </>}
         </dl>
+        {!supplier && accounting.period !== accounting.originalPeriod &&
+          <p className="spda-muted">Moved from {formatPeriod(accounting.originalPeriod)} to {formatPeriod(accounting.period)} after a month-end cutoff.</p>}
       </section>
       {!supplier && <>
         <section className="spda-panel">

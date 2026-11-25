@@ -62,6 +62,7 @@ export interface EvidenceRequest {
 export interface Invoice extends Omit<InvoiceSeed, "offset" | "day" | "scope"> {
   scope: string;
   opened: string;
+  accounting?: { originalPeriod: string; period: string };
   assignment: { stage: Stage; name: string; owner?: string } | null;
   outcome: { status: Outcome; note: string; when: string } | null;
   decisions: { role: Role; action: "approve" | "reject"; note: string }[];
@@ -104,9 +105,11 @@ export function seedCases(now = new Date()): Invoice[] {
     const openedDate = monthAt(now, offset);
     openedDate.setDate(Math.min(day ?? 1, now.getDate()));
     const opened = openedDate.toISOString();
+    const period = localDate(openedDate).slice(0, 7);
     const assigned = invoice.id === "meghna";
     return {
       ...invoice, opened, scope: invoice.scope ?? `${invoice.entity} purchasing`,
+      accounting: { originalPeriod: period, period },
       assignment: assigned ? { stage: "budget", owner: "bd-owner", name: "Farhana Rahman" } : null,
       outcome: null, decisions: [], requests: [], bank: "pending",
       events: [

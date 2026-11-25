@@ -31,6 +31,8 @@ For the prototype alone, `bun run dev:web` is enough after configuring `apps/web
 
 The original standalone guide and source PDF are in the parent folder. The web app includes the guide text and starts with its own sample state.
 
+Exceptions and invoice details show the accounting period and final-approval cutoff. The prototype starts each sample invoice in its opening month and moves outstanding invoices to the next period after the third working day. Each move appears in the decision timeline. The prototype uses local time in New York, London, and Dhaka, counts Saturday and Sunday as weekends for the US and UK and Friday and Saturday for Bangladesh, and uses a weekend-only calendar. Open the workspace to catch up on missed cutoffs.
+
 The supplier thumbnails illustrate each sample company’s industry. [CNC machining](https://www.pexels.com/photo/close-up-photo-of-metal-tool-10406128/) · [Packaging](https://www.pexels.com/photo/close-up-of-boxes-5025503/) · [Freight](https://www.pexels.com/photo/truck-on-road-near-park-9754798/) · [Office supplies](https://www.pexels.com/photo/flat-lay-shot-of-desk-with-office-items-9930282/) · [Agriculture](https://www.pexels.com/photo/plantation-with-green-crops-growing-in-agricultural-farm-6216870/) · [Components](https://www.pexels.com/photo/a-pile-of-metal-spare-parts-7568430/) · [Engineering](https://www.pexels.com/photo/modern-industrial-production-facility-interior-38804512/)
 
 ## Workspace layout
