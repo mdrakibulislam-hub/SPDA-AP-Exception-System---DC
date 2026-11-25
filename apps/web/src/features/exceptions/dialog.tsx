@@ -1,12 +1,13 @@
 import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
 import { useEffect, useId, useRef, type ReactNode } from "react";
 
-export function WorkspaceDialog({ title, close, children, drawer = false, headerAction }: {
+export function WorkspaceDialog({ title, close, children, drawer = false, headerAction, restoreFocus }: {
   title: string;
   close: () => void;
   children: ReactNode;
   drawer?: boolean;
   headerAction?: ReactNode;
+  restoreFocus?: () => HTMLElement | null;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -16,7 +17,8 @@ export function WorkspaceDialog({ title, close, children, drawer = false, header
     element?.showModal();
     return () => {
       element?.close();
-      if (previous instanceof HTMLElement) previous.focus({ preventScroll: true });
+      const target = restoreFocus?.() ?? previous;
+      if (target instanceof HTMLElement) target.focus({ preventScroll: true });
     };
   }, []);
 

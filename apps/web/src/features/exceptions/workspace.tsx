@@ -107,7 +107,7 @@ export function WorkspaceLayout() {
   }
 
   return (
-    <div className="spda-shell">
+    <div className="spda-shell" data-queue={pathname === "/exceptions"}>
       <a className="spda-skip" href="#workspace-content">Skip to workspace content</a>
       <aside className="spda-rail">
         <Link to="/" className="spda-brand" aria-label="SPDA Supply dashboard">
@@ -133,23 +133,16 @@ export function WorkspaceLayout() {
               {Object.entries(roles).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
             </select>
           </label>
+          {role !== "supplier" && <WorkspaceAssistant key={role} workspace={workspace} currentId={invoiceId} />}
         </div>
         <main id="workspace-content" className="spda-content" tabIndex={-1}>
           <Outlet />
         </main>
       </div>
-      {role !== "supplier" && <WorkspaceAssistant key={role} workspace={workspace} currentId={invoiceId} />}
     </div>
   );
 }
 
 export function StatusBadge({ status }: { status: keyof typeof statuses }) {
   return <span className="spda-badge" data-status={status}><span aria-hidden="true" />{statuses[status]}</span>;
-}
-
-export function PageTitle({ title, description, actions }: { title: string; description: string; actions?: ReactNode }) {
-  return <header className="spda-page-heading">
-    <div><h1>{title}</h1><p>{description}</p></div>
-    {actions && <div className="spda-actions">{actions}</div>}
-  </header>;
 }

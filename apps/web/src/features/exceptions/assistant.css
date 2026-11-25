@@ -82,6 +82,7 @@
   border-inline-start: 1px solid var(--spda-line);
   border-radius: 0;
   overflow: hidden;
+  font-size: .9375rem;
   box-shadow: -1rem 0 3rem rgb(20 41 35 / .14);
   animation: spda-assistant-enter 200ms cubic-bezier(.2, .65, .3, 1);
 }
@@ -231,7 +232,7 @@
 }
 
 @media (max-width: 760px) {
-  .spda-shell:has(.spda-assistant-launcher) .spda-content { padding-bottom: 5.5rem; }
+  .spda-shell:not([data-queue="true"]):has(.spda-assistant-launcher) .spda-content { padding-bottom: 5.5rem; }
   .spda-assistant-drawer > header, .spda-assistant-log, .spda-assistant-footer { padding-inline: .85rem; }
 }
 

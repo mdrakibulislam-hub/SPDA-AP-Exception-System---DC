@@ -1,5 +1,4 @@
-.spda-shell, .spda-portal {
-  color-scheme: light;
+.spda-shell, .spda-portal, .spda-queue-menu {
   --spda-bg: #f5f7f6;
   --spda-surface: #fff;
   --spda-ink: #172520;
@@ -19,6 +18,10 @@
   --muted-foreground: var(--spda-muted);
   --ring: var(--spda-brand);
   --input: var(--spda-line);
+}
+
+.spda-shell, .spda-portal {
+  color-scheme: light;
   min-height: 100svh;
   color: var(--spda-ink);
   background: var(--spda-bg);
@@ -62,19 +65,16 @@
 }
 .spda-role, .spda-period, .spda-period label { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
 .spda-content { width: min(100%, 83rem); margin-inline: auto; padding: 2rem clamp(1rem, 3vw, 2.75rem) 3rem; }
-.spda-content > * + * { margin-top: 1rem; }
-.spda-page-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.35rem; }
-.spda-page-heading .spda-actions { margin: 0; }
+.spda-content > :where(:not(.sr-only)) ~ :where(:not(.sr-only, dialog)) { margin-top: 1rem; }
 .spda-shell h1, .spda-portal h1 { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 690; letter-spacing: -.045em; line-height: 1.13; overflow-wrap: anywhere; }
 .spda-shell h2, .spda-portal h2 { font-size: 1.1rem; font-weight: 670; letter-spacing: -.015em; line-height: 1.3; }
 .spda-shell h3 { font-size: .975rem; font-weight: 650; }
-.spda-page-heading p { color: var(--spda-muted); margin-top: .35rem; }
 .spda-muted, .spda-list small { color: var(--spda-muted); font-size: .86rem; }
 
-.spda-shell [data-slot="button"], .spda-portal [data-slot="button"], .spda-link-button {
+.spda-shell :is([data-slot="button"], .spda-queue-quick), .spda-portal [data-slot="button"], .spda-link-button {
   min-height: 2.55rem; min-width: 0; padding: .4rem .8rem; border-radius: .42rem; font-size: .875rem; line-height: 1.35; white-space: normal;
 }
-.spda-shell [data-slot="button"]:not(:disabled), .spda-portal [data-slot="button"]:not(:disabled) { cursor: pointer; }
+.spda-shell :is([data-slot="button"], .spda-queue-quick):not(:disabled), .spda-portal [data-slot="button"]:not(:disabled) { cursor: pointer; }
 .spda-link-button { display: inline-flex; width: fit-content; align-items: center; gap: .5rem; background: var(--spda-brand); color: white; border: 1px solid transparent; font-weight: 600; }
 .spda-link-button:hover { background: #104737; }
 .spda-back, .spda-file-link { display: inline-flex; align-items: center; gap: .35rem; color: var(--spda-brand); }
@@ -111,23 +111,11 @@
 .spda-status-nav a:hover, .spda-status-nav a[aria-current="page"] { background: var(--spda-tint); color: var(--spda-brand); }
 .spda-status-nav a[aria-current="page"] { border-color: var(--spda-brand); font-weight: 650; }
 .spda-status-nav span { color: var(--spda-muted); font-variant-numeric: tabular-nums; }
-.spda-queue { padding: 0; }
-.spda-queue > * + * { margin-top: 0; }
-.spda-bulk { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--spda-line); padding: .55rem .8rem; }
-.spda-bulk .spda-actions { margin: 0; }
 .spda-check { display: inline-flex; align-items: center; gap: .45rem; cursor: pointer; }
-.spda-check-row { min-width: 1.9rem; min-height: 2.3rem; justify-content: center; }
 .spda-list { list-style: none; margin-bottom: 0; padding: 0; }
-.spda-case-list > li { display: flex; align-items: center; padding: .65rem .8rem; gap: .45rem; }
-.spda-case-list > li + li, .spda-documents > li + li, .spda-overview-list > li + li { border-top: 1px solid var(--spda-line); }
-.spda-case-list > li:hover { background: var(--spda-bg); }
-.spda-case-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: .4rem 1rem; flex: 1; min-width: 0; }
-.spda-case-row strong, .spda-batch-result a { color: var(--spda-brand); }
-.spda-case-row:hover strong { text-decoration: underline; }
-.spda-case-row :is(p, small) { overflow-wrap: anywhere; }
+.spda-documents > li + li, .spda-overview-list > li + li { border-top: 1px solid var(--spda-line); }
+.spda-batch-result a { color: var(--spda-brand); }
 .spda-amount { white-space: nowrap; font-weight: 620; font-size: .9rem; font-variant-numeric: tabular-nums; }
-.spda-row-open { display: grid; place-items: center; width: 2.55rem; height: 2.55rem; color: var(--spda-brand); border-radius: .4rem; }
-.spda-case-row:hover .spda-row-open { background: var(--spda-tint); }
 .spda-empty { color: var(--spda-muted); }
 .spda-batch-result summary, .spda-assist summary, .spda-content details summary { font-weight: 650; cursor: pointer; }
 .spda-batch-result li + li, .spda-documents li + li { margin-top: .6rem; padding-top: .6rem; }
@@ -175,9 +163,8 @@
 
 .spda-guide { background: var(--spda-surface); border: 1px solid var(--spda-line); border-radius: var(--spda-radius); padding: clamp(1rem, 4vw, 2.4rem); }
 .spda-guide p { max-width: 76ch; }
-.spda-guide p + p, .spda-guide header h1 + p { margin-top: .55rem; }
+.spda-guide p + p { margin-top: .55rem; }
 .spda-guide h2 { font-size: 1.55rem; margin-bottom: .65rem; }
-.spda-guide header > p:first-child { color: var(--spda-brand); font-weight: 650; margin-bottom: .35rem; }
 .spda-guide .page-body > section { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--spda-line); scroll-margin-top: 1rem; }
 .spda-guide .grid, .spda-guide .summary, .spda-guide .approval-levels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
 .spda-guide .summary, .spda-guide .approval-levels { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-block: .85rem; }
@@ -217,10 +204,7 @@
 
 @media (max-width: 530px) {
   .spda-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .spda-case-row { grid-template-columns: minmax(0, 1fr) auto; gap: .25rem; }
-  .spda-case-row > div { grid-column: 1 / -1; }
   .spda-overview-list a, .spda-guide .grid, .spda-guide .summary, .spda-guide .approval-levels, .spda-guide .rules > div { grid-template-columns: 1fr; }
   .spda-navigation a, .spda-status-nav a { min-height: 2.75rem; }
   .spda-panel, .spda-dialog { padding: .9rem; }
-  .spda-queue { padding: 0; }
 }

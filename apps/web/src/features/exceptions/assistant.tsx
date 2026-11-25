@@ -110,9 +110,9 @@ export function WorkspaceAssistant({ currentId, workspace }: {
   const routingPrompt = (lastMessage?.kind === "assistant" ? lastMessage.suggestions?.[0] : undefined) ?? "Suggest routing";
 
   return <>
-    <button type="button" className="spda-assistant-launcher" aria-haspopup="dialog" aria-expanded={open}
+    <button type="button" className="spda-assistant-launcher" aria-label="Ask assistant" aria-haspopup="dialog" aria-expanded={open}
       onClick={() => setOpen(true)}>
-      <Mascot /><span>Ask assistant</span>
+      <Mascot /><span className="spda-assistant-label">Ask assistant</span>
     </button>
     {open && <WorkspaceDialog drawer title="AP assistant" close={close}
       headerAction={<Button type="button" variant="ghost" size="icon" aria-label="Close assistant" onClick={close}><X size={19} /></Button>}>

@@ -2,7 +2,7 @@ import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { localDate, monthAt, roles, statusOf } from "./model";
-import { PageTitle, useWorkspace } from "./workspace";
+import { useWorkspace } from "./workspace";
 
 type Point = { label: string; count: number };
 
@@ -108,7 +108,7 @@ export function DashboardScreen() {
 
   return (
     <>
-      <PageTitle title={`${roles[role]} dashboard`} description="Outcomes for sample invoices opened in the selected period." />
+      <h1 className="sr-only">{roles[role]} dashboard</h1>
       <div className="spda-period">
         <label>Time period <select value={period} onChange={event => { setError(""); setPeriod(event.target.value); }}>
           <option value="1">This month</option>

@@ -1,16 +1,21 @@
 import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@SPDA-AP-Exception-System---DC/ui/components/dropdown-menu";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useState, type FormEvent } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
+import { caseActionLabel, caseActionOrder, CaseDialog } from "./case-actions";
 import { DialogActions, WorkspaceDialog, errorMessage } from "./dialog";
 import { EvidenceLink } from "./evidence";
 import {
-  applyBulk, bulkKey, evidenceDraft, planBulk, roles, statuses, statusOf,
-  type BatchResult, type BulkAction, type BulkRow, type Recipient, type Status,
+  allowed, applyBulk, bulkKey, evidenceDraft, ownerAway, paymentRisk, planBulk, roles, statuses, statusOf,
+  type Action, type BatchResult, type BulkAction, type BulkRow, type Invoice, type Recipient, type Role, type Status,
 } from "./model";
-import { PageTitle, useWorkspace } from "./workspace";
+import { useWorkspace } from "./workspace";
+import "./queue.css";
+
+const supplierPhotos = import.meta.glob<string>("./suppliers/*.webp", { eager: true, query: "?url", import: "default" });
 
 const actions: Record<BulkAction, [label: string, title: string, submit: string]> = {
   route: ["Route to owners", "Review bulk routing", "Send approval requests"],
@@ -112,16 +117,81 @@ function BatchSummary({ result }: { result: BatchResult }) {
   </details>;
 }
 
+function QueueCard({ invoice, role, selected, select, openAction }: {
+  invoice: Invoice;
+  role: Role;
+  selected: boolean;
+  select: (checked: boolean) => void;
+  openAction: (action: Action, trigger: HTMLButtonElement | null) => void;
+}) {
+  const trigger = useRef<HTMLButtonElement>(null);
+  const photo = supplierPhotos[`./suppliers/${invoice.id}.webp`];
+  const initials = invoice.supplier.match(/[\p{L}\p{N}]+/gu)?.slice(0, 2).map(word => word[0]).join("").toUpperCase();
+  const quickActions = caseActionOrder.filter(action => allowed(invoice, role, action));
+  const showIssue = role !== "supplier";
+
+  return <li className="spda-queue-card" data-selected={selected}>
+    <div className="spda-queue-identity">
+      {role === "ap" && <label className="spda-check spda-queue-check">
+        <input type="checkbox" checked={selected} aria-label={`Select ${invoice.supplier} · ${invoice.ref}`}
+          onChange={event => select(event.target.checked)} />
+      </label>}
+      <span className="spda-queue-photo" aria-hidden="true">
+        {initials}
+        {photo && <img src={photo} alt="" width={144} height={144} onError={event => { event.currentTarget.hidden = true; }} />}
+      </span>
+      <div className="spda-queue-details">
+        <h2>{invoice.supplier}</h2>
+        <p className="spda-queue-meta">
+          <span>{invoice.ref === "Not found" ? "No invoice number" : `Invoice ${invoice.ref}`}</span>
+          <span>{invoice.entity}</span>
+        </p>
+        {showIssue && <>
+          <div className="spda-queue-issue">
+            <span className="spda-queue-type" data-risk={paymentRisk(invoice)}>{invoice.type}</span>
+            <p>{invoice.issue}</p>
+          </div>
+          {invoice.assignment && <p className="spda-queue-context"><strong>Assigned to</strong> {invoice.assignment.name}{ownerAway(invoice) ? " · away" : ""}</p>}
+          {invoice.outcome && <p className="spda-queue-context"><strong>Decision note</strong> {invoice.outcome.note}</p>}
+        </>}
+      </div>
+    </div>
+    <div className="spda-queue-tools">
+      <span className="spda-amount"><span className="sr-only">Amount </span>{invoice.amount}</span>
+      <div className="spda-queue-card-actions">
+        {quickActions.length > 0 && <DropdownMenu>
+          <DropdownMenuTrigger ref={trigger} render={<Button type="button" variant="outline" />} className="spda-queue-quick"
+            aria-label={`Quick actions for ${invoice.supplier}`}>
+            Quick actions <ChevronDown size={15} aria-hidden="true" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="spda-queue-menu">
+            {quickActions.map(action => <DropdownMenuItem key={action} onClick={() => openAction(action, trigger.current)}>
+              {caseActionLabel(action, invoice)}
+            </DropdownMenuItem>)}
+          </DropdownMenuContent>
+        </DropdownMenu>}
+        <Link className="spda-link-button" to="/exceptions/$invoiceId" params={{ invoiceId: invoice.id }}
+          aria-label={`View invoice for ${invoice.supplier}`}>
+          View <ArrowRight size={15} aria-hidden="true" />
+        </Link>
+      </div>
+    </div>
+  </li>;
+}
+
 export function QueueScreen({ status }: { status: Status }) {
   const { role, visible, suggestedIds, setSuggestedIds } = useWorkspace();
   const [selected, setSelected] = useState(() => new Set(suggestedIds));
   const [operation, setOperation] = useState<{ action: BulkAction; ids: string[] }>();
+  const [quickAction, setQuickAction] = useState<{ id: string; action: Action; trigger: HTMLButtonElement | null }>();
+  const activeStatusLink = useRef<HTMLAnchorElement>(null);
   const [result, setResult] = useState<BatchResult>();
   const shown = visible.filter(invoice => statusOf(invoice) === status);
   const canSelect = role === "ap";
   const selectedIds = shown.filter(invoice => selected.has(invoice.id)).map(invoice => invoice.id);
   const allSelected = shown.length > 0 && selectedIds.length === shown.length;
   const title = role === "ap" ? "Exceptions" : role === "supplier" ? "My invoices" : `${roles[role]} queue`;
+  const actionInvoice = quickAction && visible.find(invoice => invoice.id === quickAction.id);
 
   useEffect(() => {
     if (suggestedIds.length) setSuggestedIds([]);
@@ -137,15 +207,15 @@ export function QueueScreen({ status }: { status: Status }) {
 
   return (
     <>
-      <PageTitle title={title} description={role === "supplier" ? "Track the status of your sample invoice and open requests." : "Check what is holding each invoice and route the next step."} />
+      <h1 className="sr-only">{title}</h1>
       <nav className="spda-status-nav" aria-label="Invoice status">
         {Object.entries(statuses).map(([value, label]) => <Link key={value} to="/exceptions" search={{ status: value as Status }}
-          activeOptions={{ exact: true }} aria-current={status === value ? "page" : undefined}>
+          activeOptions={{ exact: true }} aria-current={status === value ? "page" : undefined} ref={status === value ? activeStatusLink : undefined}>
           {label}<span>{visible.filter(invoice => statusOf(invoice) === value).length}</span>
         </Link>)}
       </nav>
       {result && canSelect && <BatchSummary key={result.code} result={result} />}
-      {shown.length ? <section className="spda-panel spda-queue">
+      {shown.length ? <section className="spda-queue" aria-label={statuses[status]}>
         {canSelect && <div className="spda-bulk">
           <label className="spda-check">
             <input type="checkbox" aria-label={`Select all cases in ${statuses[status]}`} checked={allSelected}
@@ -158,30 +228,23 @@ export function QueueScreen({ status }: { status: Status }) {
               disabled={!selectedIds.length} onClick={() => setOperation({ action, ids: selectedIds })}>{actions[action][0]}</Button>)}
           </div>
         </div>}
-        <ul className="spda-list spda-case-list">
-          {shown.map(invoice => <li key={invoice.id}>
-            {canSelect && <label className="spda-check spda-check-row">
-              <input type="checkbox" checked={selected.has(invoice.id)} aria-label={`Select ${invoice.supplier} · ${invoice.ref}`}
-                onChange={event => {
-                  const next = new Set(selected);
-                  if (event.target.checked) next.add(invoice.id);
-                  else next.delete(invoice.id);
-                  setSelected(next);
-                }} />
-            </label>}
-            <Link to="/exceptions/$invoiceId" params={{ invoiceId: invoice.id }} className="spda-case-row">
-              <div>
-                <strong>{invoice.ref}</strong>
-                <p>{invoice.supplier}</p>
-                {role !== "supplier" && <small>{invoice.outcome?.note || invoice.assignment?.name || invoice.issue}</small>}
-              </div>
-              <span className="spda-amount">{invoice.amount}</span>
-              <span className="spda-row-open"><ArrowUpRight size={16} aria-hidden="true" /></span>
-            </Link>
-          </li>)}
+        <ul className="spda-queue-cards spda-list" role="list">
+          {shown.map(invoice => <QueueCard key={invoice.id} invoice={invoice} role={role}
+            selected={canSelect && selected.has(invoice.id)}
+            select={checked => setSelected(previous => {
+              const next = new Set(previous);
+              if (checked) next.add(invoice.id);
+              else next.delete(invoice.id);
+              return next;
+            })}
+            openAction={(action, trigger) => setQuickAction({ id: invoice.id, action, trigger })} />)}
         </ul>
       </section> : <div className="spda-panel spda-empty">No {role === "supplier" ? "invoices" : "exceptions"} in this stage.</div>}
       {operation && <BulkDialog action={operation.action} ids={operation.ids} close={() => setOperation(undefined)} done={handleResult} />}
+      {quickAction && actionInvoice && <CaseDialog invoice={actionInvoice} action={quickAction.action}
+        draft={quickAction.action === "request" ? evidenceDraft(actionInvoice) : undefined}
+        restoreFocus={() => quickAction.trigger?.isConnected ? quickAction.trigger : activeStatusLink.current}
+        close={() => setQuickAction(undefined)} />}
     </>
   );
 }

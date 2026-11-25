@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-import { allowed, nextStep, ownerAway, ownerOptions, paymentRisk, roles, suggestedRouting } from "./model";
-import { PageTitle, useWorkspace } from "./workspace";
+import { allowed, nextStep, ownerAway, ownerOptions, paymentRisk, suggestedRouting } from "./model";
+import { useWorkspace } from "./workspace";
 
 export function OverviewScreen() {
   const { cases, role, visible, setSuggestedIds } = useWorkspace();
   if (role === "supplier") return <>
-    <PageTitle title="Overview unavailable" description="You can track the status of your sample invoice in My invoices." />
+    <h1 className="sr-only">AI overview</h1>
     <Link to="/exceptions" search={{ status: "needs" }} className="spda-link-button">Open My invoices</Link>
   </>;
 
@@ -23,8 +23,7 @@ export function OverviewScreen() {
 
   return (
     <>
-      <PageTitle title="AI overview" description={`${active.length} open ${active.length === 1 ? "case" : "cases"} in the ${roles[role]} view.`} />
-      <p className="spda-muted">Rule-based suggestions from visible invoices, assignments, and document activity.</p>
+      <h1 className="sr-only">AI overview</h1>
       {ready.length > 0 && <section className="spda-panel spda-assist">
         <h2><Sparkles size={17} aria-hidden="true" /> Suggested bulk routing · {ready.length}</h2>
         <p>These invoices need attention and have an available budget owner. Review the selection before routing.</p>
