@@ -4,8 +4,10 @@ import { QueueScreen } from "@/features/exceptions/queue";
 import { useWorkspace } from "@/features/exceptions/workspace";
 
 export const Route = createFileRoute("/_workspace/exceptions/")({
-  validateSearch: (search: Record<string, unknown>): { status?: Status } =>
-    typeof search.status === "string" && Object.hasOwn(statuses, search.status) ? { status: search.status as Status } : {},
+  validateSearch: (search: Record<string, unknown>): { status?: Status; q?: string } => ({
+    ...(typeof search.status === "string" && Object.hasOwn(statuses, search.status) ? { status: search.status as Status } : {}),
+    ...(typeof search.q === "string" && search.q.trim() ? { q: search.q.trim() } : {}),
+  }),
   component: QueueRoute,
   head: () => ({ meta: [{ title: "Exceptions · SPDA Supply" }] }),
 });

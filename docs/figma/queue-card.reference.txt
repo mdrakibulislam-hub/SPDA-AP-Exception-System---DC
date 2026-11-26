@@ -1,0 +1,105 @@
+const imgEllipse3 = "https://www.figma.com/api/mcp/asset/87f5923d-6f58-44de-84bf-78290f8f6ee1.svg";
+const imgInfo = "https://www.figma.com/api/mcp/asset/0f819d49-565d-4801-bb08-fdb1efc6b942.svg";
+const imgArrowDown01 = "https://www.figma.com/api/mcp/asset/9850b27b-bce2-4ca7-87e2-c61602adfbe2.svg";
+const imgView = "https://www.figma.com/api/mcp/asset/cbc5b35b-5a36-4a52-8354-8243b18dd08e.svg";
+
+type SupplierAvatarProps = {
+  className?: string;
+  type?: "Initial";
+};
+
+function SupplierAvatar({ className, type = "Initial" }: SupplierAvatarProps) {
+  return (
+    <div className={className || "bg-[#e8f3ef] content-stretch flex items-center justify-center overflow-clip relative rounded-[28px] size-[56px]"} data-node-id="29:5020">
+      <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#a4c2ba] text-[16px] tracking-[-0.2344px] whitespace-nowrap" data-node-id="29:5005">
+        CP
+      </p>
+    </div>
+  );
+}
+
+export default function SupplierListItem() {
+  return (
+    <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[24px] items-center pl-[24px] pr-[16px] py-[16px] relative rounded-[12px] size-full" data-node-id="29:14054" data-name="Supplier list item">
+      <SupplierAvatar className="bg-[#e8f3ef] content-stretch flex items-center justify-center overflow-clip relative rounded-[28px] shrink-0 size-[56px]" />
+      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start min-w-px relative" data-node-id="I29:14054;29:4972" data-name="Container">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[24px] min-w-full not-italic relative shrink-0 text-[#172520] text-[16px] tracking-[-0.5px] w-[min-content]" data-node-id="I29:14054;29:4973">
+          Chattogram Precision Engineering and Fabrication Works Ltd.
+        </p>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="I29:14054;29:4974">
+          <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="I29:14054;29:4975" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Invoice CPE/2026/0457
+          </p>
+          <div className="relative shrink-0 size-[4px]" data-node-id="I29:14054;29:4976">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse3} />
+          </div>
+          <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="I29:14054;29:4977" style={{ fontVariationSettings: '"wdth" 100' }}>
+            Bangladesh
+          </p>
+          <div className="relative shrink-0 size-[4px]" data-node-id="I29:14054;29:5332">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse3} />
+          </div>
+          <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="I29:14054;29:5323" style={{ fontVariationSettings: '"wdth" 100' }}>
+            AI score: 0.94
+          </p>
+          <div className="relative shrink-0 size-[4px]" data-node-id="I29:14054;29:4978">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse3} />
+          </div>
+          <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="I29:14054;29:4979">
+            <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="I29:14054;29:4980" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Moved to November 2026
+            </p>
+            <a className="block cursor-pointer relative shrink-0 size-[16px]" data-node-id="I29:14054;29:4981" data-name="info">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInfo} />
+            </a>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I29:14054;29:4985">
+          <div className="bg-[#ffe0e1] content-stretch flex flex-col items-start px-[8px] py-[2px] relative rounded-[99px] shrink-0" data-node-id="I29:14054;29:4986" data-name="Text">
+            <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[18.6px] not-italic relative shrink-0 text-[#191919] text-[12px] whitespace-nowrap" data-node-id="I29:14054;29:4987">
+              Mismatch
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[20px] not-italic relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="I29:14054;29:4988">
+            Price 3.1% above PO. Withholding tax not shown.
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[16px] items-center justify-end relative shrink-0" data-node-id="I29:14054;29:4989" data-name="Container">
+        <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="I29:14054;29:4990" data-name="Text">
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[22.88px] not-italic relative shrink-0 text-[#172520] text-[16px] tracking-[-0.5px] whitespace-nowrap" data-node-id="I29:14054;29:4991">
+            BDT 12,45,600.00
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I29:14054;29:4992">
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[36px] items-center px-[12px] py-[8px] relative rounded-[10px] shrink-0" data-node-id="I29:14054;29:4993">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="I29:14054;29:4994">
+              Assign
+            </p>
+            <div className="bg-[#e0e0e0] h-full relative shrink-0 w-px" data-node-id="I29:14054;29:4995" />
+            <div className="relative shrink-0 size-[16px]" data-node-id="I29:14054;29:4996" data-name="arrow-down-01">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowDown01} />
+            </div>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex items-center justify-center px-[12px] py-[8px] relative rounded-[10px] shrink-0 size-[36px]" data-node-id="I29:14054;29:4998">
+            <div className="relative shrink-0 size-[16px]" data-node-id="I29:14054;29:4999" data-name="view">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgView} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

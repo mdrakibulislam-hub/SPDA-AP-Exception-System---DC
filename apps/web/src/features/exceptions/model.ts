@@ -1,5 +1,5 @@
 export const roles = {
-  ap: "AP specialist",
+  ap: "AP Manager",
   budget: "Budget owner",
   head: "Department head",
   controller: "Finance controller",

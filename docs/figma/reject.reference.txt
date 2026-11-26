@@ -1,0 +1,96 @@
+const imgMultiplicationSign = "https://www.figma.com/api/mcp/asset/389b0a29-2a0f-49d2-a3e2-83c8bcc86615.svg";
+const imgInfo = "https://www.figma.com/api/mcp/asset/f23c2e1b-60e1-42bd-86c5-25bc7f3ca21d.svg";
+const imgNote01 = "https://www.figma.com/api/mcp/asset/e6063bba-ecbc-440b-b5e5-7782fe73a6a2.svg";
+const imgChevronDown = "https://www.figma.com/api/mcp/asset/c92c45e3-ef8f-4bf2-a866-d2bfb1ad4563.svg";
+
+export default function Frame46() {
+  return (
+    <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-col gap-[12px] items-start justify-center p-[16px] relative rounded-[10px] size-full" data-node-id="46:32387">
+      <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0 w-full" data-node-id="46:32388">
+        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[22.88px] min-w-px not-italic relative text-[#172520] text-[16px] tracking-[-0.5px]" data-node-id="46:32389">
+          Reject this bill
+        </p>
+        <div className="relative shrink-0 size-[16px]" data-node-id="46:32390" data-name="multiplication-sign">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMultiplicationSign} />
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[8px] items-center py-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="46:32392">
+        <div className="bg-[#e8f3ef] content-stretch flex items-center justify-center overflow-clip relative rounded-[16px] shrink-0 size-[32px]" data-node-id="46:32393" data-name="Text">
+          <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#a4c2ba] text-[9.143px] tracking-[-0.1339px] whitespace-nowrap" data-node-id="46:32394">
+            CP
+          </p>
+        </div>
+        <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col font-['Inter:Regular'] font-normal gap-[4px] items-start justify-center leading-[normal] min-w-px not-italic relative whitespace-nowrap" data-node-id="46:32395">
+          <p className="min-w-full overflow-hidden relative shrink-0 text-[#191919] text-[14px] text-ellipsis tracking-[-0.07px] w-[min-content]" data-node-id="46:32396">
+            Chattogram Precision Engineering and Fabrication Works Ltd.
+          </p>
+          <p className="relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px]" data-node-id="46:32397">
+            Invoice CPE/2026/0457
+          </p>
+        </div>
+      </div>
+      <div className="bg-[#f7f7f7] content-stretch flex gap-[8px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="46:32402">
+        <div className="relative shrink-0 size-[16px]" data-node-id="46:32403" data-name="info">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInfo} />
+        </div>
+        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#191919] text-[12px] tracking-[-0.06px]" data-node-id="46:32407">
+          This moves the case to Rejected and makes your reason available to AP for follow-up.
+        </p>
+      </div>
+      <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="46:32408">
+        <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="46:32409">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="46:32410">
+            Approval reason*
+          </p>
+        </div>
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[102px] items-start p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="46:32411">
+          <div className="relative shrink-0 size-[16px]" data-node-id="46:32412" data-name="note-01">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNote01} />
+          </div>
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="46:32416">
+            Write down the pproval reason here...
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="46:32417">
+        <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="46:32418">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="46:32419">
+            Suggested action
+          </p>
+        </div>
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="46:32420">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="46:32421">
+            Select an action for this rejection
+          </p>
+          <div className="relative shrink-0 size-[16px]" data-node-id="46:32422" data-name="chevron-down">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronDown} />
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[8px] items-center justify-end relative shrink-0 w-full" data-node-id="46:32424" data-name="Bulk actions">
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] h-[36px] items-center justify-center min-w-px px-[16px] py-[8px] relative rounded-[10px]" data-node-id="46:32425">
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="46:32426">
+            Cancel
+          </p>
+        </div>
+        <div className="bg-[#e3373d] border border-[#e3373d] border-solid content-stretch flex flex-[1_0_0] h-[36px] items-center justify-center min-w-px px-[16px] py-[8px] relative rounded-[10px]" data-node-id="46:32427">
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white tracking-[-0.07px] whitespace-nowrap" data-node-id="46:32428">
+            Reject the bill
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

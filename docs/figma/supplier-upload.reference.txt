@@ -1,0 +1,112 @@
+const imgAttachment = "https://www.figma.com/api/mcp/asset/aa292ea9-9d8f-4470-b6c3-b2da25b514ee.svg";
+const imgBank = "https://www.figma.com/api/mcp/asset/8f288f0b-5b93-464a-a10f-914bb7863091.svg";
+const imgUpload01 = "https://www.figma.com/api/mcp/asset/0331daa4-2586-49fc-9a5d-e0301737c930.svg";
+
+export default function EvidenceUploadLinkPage() {
+  return (
+    <div className="bg-[#f7f7f7] content-stretch flex flex-col gap-[24px] items-center justify-center p-[8px] relative size-full" data-node-id="46:40159" data-name="Evidence upload link page">
+      <div className="content-stretch flex gap-[8px] items-center relative rounded-[10px] shrink-0" data-node-id="46:40160">
+        <div className="relative shrink-0 size-[22px]" data-node-id="46:40161" data-name="attachment">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAttachment} />
+        </div>
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[normal] not-italic relative shrink-0 text-[#191919] text-[16px] tracking-[-0.08px] whitespace-nowrap" data-node-id="46:40163">
+          SPDA Supply
+        </p>
+      </div>
+      <div className="bg-white border border-[rgba(0,0,0,0.12)] border-solid content-stretch flex flex-col gap-[16px] items-start overflow-clip p-[24px] relative rounded-[16px] shrink-0 w-[646px]" data-node-id="46:40164">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px] whitespace-nowrap" data-node-id="46:40165">
+          Upload evidence
+        </p>
+        <div className="content-stretch flex gap-[12px] items-center py-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="46:40166">
+          <div className="bg-[#e8f3ef] content-stretch flex items-center justify-center overflow-clip relative rounded-[20px] shrink-0 size-[40px]" data-node-id="46:40167" data-name="Text">
+            <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#a4c2ba] text-[11.429px] tracking-[-0.1674px] whitespace-nowrap" data-node-id="46:40168">
+              CP
+            </p>
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px relative" data-node-id="46:40169">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] min-w-full not-italic overflow-hidden relative shrink-0 text-[#191919] text-[14px] text-ellipsis tracking-[-0.07px] w-[min-content] whitespace-nowrap" data-node-id="46:40170">
+              Chattogram Precision Engineering and Fabrication Works Ltd.
+            </p>
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="46:40171">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="46:40172">
+                Invoice CPE/2026/0457
+              </p>
+              <div className="bg-[#bfffee] content-stretch flex gap-[4px] items-center px-[8px] py-[2px] relative rounded-[99px] shrink-0" data-node-id="46:40173" data-name="Text">
+                <div className="relative shrink-0 size-[12px]" data-node-id="46:40174" data-name="bank">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBank} />
+                </div>
+                <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[18.6px] not-italic relative shrink-0 text-[#191919] text-[12px] whitespace-nowrap" data-node-id="46:40180">
+                  Bank AC Change
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="[word-break:break-word] bg-[#f7f7f7] content-stretch flex flex-col gap-[8px] items-start justify-center not-italic p-[16px] relative rounded-[10px] shrink-0 w-full" data-node-id="46:40185">
+          <p className="font-['Inter:Medium'] font-medium leading-[normal] overflow-hidden relative shrink-0 text-[#191919] text-[14px] text-ellipsis tracking-[-0.07px] w-full whitespace-nowrap" data-node-id="46:40186">
+            Requested from budget owner
+          </p>
+          <p className="font-['Inter:Regular'] font-normal leading-[18px] relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] w-full" data-node-id="46:40187">
+            Invoice 553019. Please provide a written explanation of the change. We will confirm the request by DD/MM/YYYY so we can initiate the release of payment.
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="46:40188">
+          <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="46:40189">
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[normal] min-w-px not-italic relative text-[#191919] text-[14px] tracking-[-0.07px]" data-node-id="46:40190">
+              Choose a file
+            </p>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-col gap-[16px] items-center justify-center px-[24px] py-[32px] relative rounded-[12px] shrink-0 w-full" data-node-id="46:40191" data-name="List Item">
+            <div className="relative shrink-0 size-[24px]" data-node-id="46:40192" data-name="upload-01">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUpload01} />
+            </div>
+            <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-center not-italic relative shrink-0 w-full" data-node-id="46:40195">
+              <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] relative shrink-0 text-[#172520] text-[16px] tracking-[-0.5px] whitespace-nowrap" data-node-id="46:40196">
+                Drag or click to upload the file
+              </p>
+              <p className="font-['Inter:Regular'] font-normal leading-[normal] min-w-full relative shrink-0 text-[#858585] text-[14px] text-center tracking-[-0.07px] w-[min-content]" data-node-id="46:40197">
+                For multiple files please Zip the file then upload
+              </p>
+            </div>
+            <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="46:40198">
+              <p className="[word-break:break-word] font-['SF_Pro:Medium'] font-medium leading-[18.9px] relative shrink-0 text-[#172520] text-[14px] tracking-[-0.1504px] whitespace-nowrap" data-node-id="46:40202" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Browse File
+              </p>
+            </div>
+          </div>
+          <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="46:40203">
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="46:40204">
+              TXT, PDF, JPG, or PNG up to 1 MB.
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="46:40205">
+          <div className="bg-[#191919] border border-[#191919] border-solid content-stretch flex h-[36px] items-center pl-[12px] pr-[8px] py-[8px] relative rounded-[10px] shrink-0" data-node-id="46:40206">
+            <p className="[word-break:break-word] font-['SF_Pro:Medium'] font-medium leading-[18.9px] relative shrink-0 text-[14px] text-white tracking-[-0.1504px] whitespace-nowrap" data-node-id="46:40207" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Submit the evidence
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 [word-break:break-word] absolute bottom-[68px] font-['Inter:Regular'] font-normal leading-[0] left-[720px] not-italic text-[#858585] text-[12px] text-center tracking-[-0.06px] translate-y-full w-[1424px]" data-node-id="46:40208">
+        <p className="leading-[18px] mb-0">For any kind of confusion or queries please contact at +99 XXXX XXXXX</p>
+        <p>
+          <span className="leading-[18px]">{`or mail at `}</span>
+          <span className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-from-font decoration-solid leading-[18px] underline">spda@email.com</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

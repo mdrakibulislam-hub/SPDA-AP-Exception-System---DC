@@ -1,0 +1,115 @@
+.spda-case-page { padding: 0 16px 16px; min-width: 0; }
+.spda-case-detail { display: flex; flex-direction: column; align-items: stretch; gap: 24px; padding: 16px 24px; border: 1px solid var(--spda-line); border-radius: 12px; background: var(--spda-surface); min-width: 0; }
+.spda-case-icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.spda-case-icon img { display: block; max-width: none; }
+.spda-case-back { display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 8px; color: var(--spda-muted); font-size: 14px; border-radius: 10px; }
+.spda-case-back:hover { color: var(--spda-ink); background: var(--spda-bg); }
+.spda-case-identity { display: flex; align-items: center; gap: 24px; min-width: 0; }
+.spda-case-initials { display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%; background: #e8f3ef; color: #a4c2ba; font-size: 16px; font-weight: 700; letter-spacing: -.2344px; }
+.spda-case-heading { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+.spda-case-heading h1 { color: var(--spda-ink); font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: -.5px; overflow-wrap: anywhere; }
+.spda-case-heading p { color: var(--spda-muted); font: 14px/20px -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -.07px; }
+.spda-case-amount { align-self: flex-start; margin-top: 2px; padding: 4px 16px; border-radius: 999px; background: #e8f3ef; color: #191919; font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: -.5px; white-space: nowrap; }
+.spda-case-information { display: grid; gap: 16px; }
+.spda-case-issue { display: flex; align-items: center; gap: 10px; background: var(--spda-bg); border-radius: 12px; padding: 12px; color: #191919; font-size: 12px; line-height: 16px; }
+.spda-case-metadata { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 12px; }
+.spda-case-fact { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px 16px; border: 1px solid var(--spda-line); border-radius: 12px; }
+.spda-case-fact-icon { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; border: 1px solid var(--spda-line); border-radius: 10px; }
+.spda-case-fact > div { min-width: 0; }
+.spda-case-fact dt, .spda-case-fact dd { font-size: 14px; line-height: 22px; letter-spacing: -.07px; overflow-wrap: anywhere; }
+.spda-case-fact dt { color: var(--spda-muted); margin-bottom: 2px; }
+.spda-case-fact dd { color: #191919; }
+.spda-case-away { color: #a05b19; }
+.spda-case-period-note { color: var(--spda-muted); font-size: 12px; line-height: 18px; }
+.spda-case-workflow { display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--spda-line); border-radius: 12px; padding: 16px 16px 16px 24px; }
+.spda-case-workflow h2, .spda-case-documents h2 { color: #191919; font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: -.07px; }
+.spda-case-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.spda-case-steps li { display: flex; align-items: center; gap: 16px; min-width: 0; padding: 12px 16px; border: 1px solid var(--spda-line); border-radius: 8px; }
+.spda-case-step-icon { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: #e0e0e0; color: #858585; }
+.spda-case-steps [data-state="approved"] .spda-case-step-icon { background: #15af76; }
+.spda-case-steps [data-waiting="true"] .spda-case-step-icon { background: #191919; }
+.spda-case-step-icon > img { display: block; max-width: none; }
+.spda-case-steps [data-state="rejected"] .spda-case-step-icon, .spda-case-steps [data-state="stopped"] .spda-case-step-icon { background: #fbe9e9; color: #de494c; }
+.spda-case-steps [data-state="not-required"] { opacity: .62; }
+.spda-case-steps li > div { display: grid; gap: 2px; min-width: 0; }
+.spda-case-steps li > div > span { color: var(--spda-muted); font-size: 14px; line-height: 22px; }
+.spda-case-steps strong { color: #191919; font-size: 14px; line-height: 22px; font-weight: 400; overflow-wrap: anywhere; }
+.spda-case-decision-note { display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 10px; background: var(--spda-bg); color: #191919; font-size: 12px; line-height: 18px; }
+.spda-case-note-avatar { width: 20px; height: 20px; flex-shrink: 0; border-radius: 50%; object-fit: cover; }
+.spda-case-status-note { color: var(--spda-muted); font-size: 12px; line-height: 18px; }
+.spda-case-workflow-actions, .spda-case-primary-actions { margin: 0; }
+.spda-case-primary-actions { gap: 8px; }
+.spda-case-preview { margin-left: auto; color: var(--spda-muted); }
+.spda-case-verification { display: grid; gap: 12px; padding: 16px; border: 1px solid #eddfc2; border-radius: 12px; background: #fffaf0; color: #77521d; }
+.spda-case-verification > div:first-child { display: flex; gap: 8px; align-items: center; font-size: 12px; line-height: 18px; }
+.spda-case-verification > div:first-child svg { flex-shrink: 0; }
+.spda-case-documents { display: grid; gap: 16px; }
+.spda-case-documents > ul { display: grid; gap: 12px; list-style: none; padding: 0; margin: 0; }
+.spda-case-documents li { display: grid; gap: 10px; padding: 16px; border: 1px solid var(--spda-line); border-radius: 12px; }
+.spda-case-document-heading { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.spda-case-document-heading strong { font-size: 14px; font-weight: 500; }
+.spda-case-document-heading > span { padding: 2px 8px; border-radius: 99px; background: #fff4de; color: #8b5f21; font-size: 11px; }
+.spda-case-document-heading > span[data-submitted="true"] { background: #e8f3ef; color: #116956; }
+.spda-case-documents li > p { color: #5b5b5b; font-size: 12px; line-height: 18px; }
+.spda-case-file { display: inline-flex; align-items: center; gap: 6px; color: var(--spda-brand); width: fit-content; font-size: 13px; }
+.spda-case-file:hover { text-decoration: underline; }
+.spda-case-document-review { padding: 8px; background: var(--spda-bg); border-radius: 8px; }
+.spda-case-timeline { display: grid; gap: 16px; }
+.spda-case-timeline > h2 { padding: 4px 8px; color: var(--spda-muted); font-size: 14px; line-height: 20px; font-weight: 400; }
+.spda-case-timeline > ol { list-style: none; padding: 0; margin: 0; }
+.spda-case-timeline > ol > li { display: flex; gap: 16px; padding-left: 24px; min-width: 0; }
+.spda-case-timeline-track { position: relative; display: grid; place-items: center; flex: 0 0 8px; }
+.spda-case-timeline-track::before { content: ""; position: absolute; top: 0; bottom: 0; left: 3px; width: 2px; background: var(--spda-line); }
+.spda-case-timeline-track > img { position: relative; display: block; z-index: 1; border-block: 4px solid white; box-sizing: content-box; }
+.spda-case-timeline li:first-child .spda-case-timeline-track::before { top: 50%; }
+.spda-case-timeline li:last-child .spda-case-timeline-track::before { bottom: 50%; }
+.spda-case-event { display: flex; align-items: center; flex: 1; gap: 24px; min-width: 0; margin-bottom: 16px; padding: 16px 16px 16px 24px; border: 1px solid var(--spda-line); border-radius: 12px; }
+.spda-case-event-avatar { width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%; object-fit: cover; }
+.spda-case-event-body { display: grid; gap: 10px; min-width: 0; flex: 1; }
+.spda-case-event h3 { color: var(--spda-ink); font-size: 16px; font-weight: 600; line-height: 24px; letter-spacing: -.5px; }
+.spda-case-event dl { display: grid; gap: 6px; color: var(--spda-muted); font: 14px/20px -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -.07px; }
+.spda-case-event dl > div { display: flex; align-items: flex-start; gap: 6px; }
+.spda-case-event dt { white-space: nowrap; }
+.spda-case-event dd { margin-left: -3px; min-width: 0; overflow-wrap: anywhere; }
+.spda-case-event dl .spda-case-icon { margin-top: 2px; }
+.spda-case-summary { padding: 16px; border: 1px solid var(--spda-line); border-radius: 12px; }
+.spda-case-summary summary { display: flex; align-items: center; gap: 8px; cursor: pointer; color: #5b5b5b; font-size: 14px; }
+.spda-case-summary dl { display: grid; gap: 6px; margin-top: 16px; font-size: 12px; line-height: 18px; }
+.spda-case-summary dt { margin-top: 8px; font-weight: 600; }
+.spda-case-summary dd { color: #5b5b5b; }
+.spda-case-summary .spda-button { margin-top: 16px; }
+.spda-case-note-form { display: grid; gap: 16px; }
+.spda-case-note-label { display: grid; gap: 8px; font-size: 14px; }
+.spda-case-unavailable { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--spda-line); border-radius: 12px; }
+.spda-case-unavailable h1 { font-size: 20px; font-weight: 600; }
+.spda-case-unavailable p { color: var(--spda-muted); }
+.spda-case-unavailable .spda-button { width: fit-content; }
+@media (max-width: 1150px) {
+  .spda-case-steps li { padding: 12px; gap: 10px; }
+  .spda-case-step-icon { width: 32px; height: 32px; }
+  .spda-case-fact { padding: 12px; gap: 8px; }
+}
+@media (max-width: 900px) {
+  .spda-case-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spda-case-steps { grid-template-columns: 1fr; }
+  .spda-case-identity { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px 16px; }
+  .spda-case-amount { grid-column: 2; justify-self: start; margin: 0; }
+  .spda-case-workflow { padding: 16px; }
+  .spda-case-preview { margin-left: 0; }
+}
+@media (max-width: 560px) {
+  .spda-case-page { padding: 0 10px 10px; }
+  .spda-case-detail { padding: 12px; gap: 20px; }
+  .spda-case-metadata { grid-template-columns: 1fr; }
+  .spda-case-initials { width: 44px; height: 44px; }
+  .spda-case-identity { grid-template-columns: 44px minmax(0, 1fr); }
+  .spda-case-heading h1 { font-size: 14px; line-height: 20px; }
+  .spda-case-amount { font-size: 14px; }
+  .spda-case-event { padding: 12px; gap: 12px; align-items: flex-start; }
+  .spda-case-event-avatar { width: 32px; height: 32px; }
+  .spda-case-timeline > ol > li { padding-left: 4px; gap: 10px; }
+  .spda-case-event h3 { font-size: 14px; }
+  .spda-case-event dl { font-size: 12px; }
+  .spda-case-event dl > div { flex-wrap: wrap; gap: 4px; }
+  .spda-case-event dd { flex: 1; margin-left: 0; }
+}

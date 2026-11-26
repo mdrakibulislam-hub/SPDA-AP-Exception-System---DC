@@ -158,7 +158,7 @@ function parseActions(input: string, context: AssistantContext): AssistantAction
 }
 
 function reviewActions(cases: Invoice[], role: Role, actions: AssistantAction[]): ActionReview {
-  if (role !== "ap") throw new Error("The AP specialist view can route invoices, request evidence, and add notes.");
+  if (role !== "ap") throw new Error("The AP Manager view can route invoices, request evidence, and add notes.");
   if (!actions.length) throw new Error("There are no cases ready for suggested routing.");
 
   const seen = new Set<string>();
@@ -256,7 +256,7 @@ export function answerAssistant(input: string, context: AssistantContext): Assis
     }
 
     if (/\b(?:suggest|recommend|show)\b.*\b(?:route|routing|owner|owners)\b|\bwho should\b.*\b(?:own|handle|review)\b/.test(query)) {
-      if (context.role !== "ap") return { text: "Routing suggestions are available in the AP specialist view." };
+      if (context.role !== "ap") return { text: "Routing suggestions are available in the AP Manager view." };
       const ready = suggestedRouting(context.visible);
       return {
         text: ready.length ? `${count(ready.length, "case")} ready for budget-owner review.` : "There are no cases ready for suggested routing.",

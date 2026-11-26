@@ -1,0 +1,66 @@
+.spda-dialog:not(.spda-assistant-drawer) {
+  position: fixed; inset: 0; width: min(440px, calc(100% - 32px)); max-height: calc(100dvh - 40px); margin: auto; overflow: auto;
+  padding: 16px; border: 1px solid var(--spda-line, #e0e0e0); border-radius: 10px; background: var(--spda-surface, #fff); color: var(--spda-ink, #172520);
+  box-shadow: none; font: 400 14px/1.45 Inter, -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: -.07px;
+}
+.spda-dialog::backdrop { background: rgb(0 0 0 / 35%); backdrop-filter: none; }
+.spda-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.spda-dialog:not(.spda-assistant-drawer) .spda-dialog-header h2 { margin: 0; color: var(--spda-ink); font-size: 16px; line-height: 23px; font-weight: 600; letter-spacing: -.5px; }
+.spda-dialog-close { display: grid; place-items: center; flex: none; width: 24px; height: 24px; padding: 4px; border: 0; border-radius: 5px; background: transparent; cursor: pointer; }
+.spda-dialog-close:hover { background: var(--spda-bg, #f7f7f7); }
+.spda-dialog-close img { display: block; }
+.spda-case-form { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.spda-dialog-invoice { display: flex; align-items: center; gap: 8px; padding-block: 12px; min-width: 0; }
+.spda-dialog-invoice > div { display: grid; gap: 4px; min-width: 0; }
+.spda-dialog-invoice p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; color: #191919; }
+.spda-dialog-invoice > div > span { color: var(--spda-muted); font-size: 12px; }
+.spda-dialog-avatar, .spda-owner-avatar { display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%; background: #e8f3ef; color: #a4c2ba; font-size: 10px; font-weight: 700; }
+.spda-modal-field { display: grid; gap: 4px; color: var(--spda-muted); font-size: 14px; font-weight: 400; }
+.spda-note-label { display: flex; align-items: baseline; min-height: 28px; padding: 4px 8px; line-height: 20px; }
+.spda-note-label > label { margin: 0; font: inherit; }
+.spda-note-recipient { appearance: none; field-sizing: content; width: 51px; min-width: 0; height: 20px; min-height: 0; padding: 0; border: 0; border-radius: 0; outline-offset: 1px; background: none; box-shadow: none; color: inherit; font: inherit; line-height: 20px; cursor: pointer; }
+.spda-note-recipient[data-recipient="Second reviewer"] { width: 105px; }
+.spda-case-form[data-action="assign"] .spda-note-label { min-height: 30px; line-height: 22px; }
+.spda-case-form[data-action="assign"] .spda-note-input { height: 96px; }
+.spda-case-form[data-action="assign"] .spda-note-input > textarea { height: 78px; min-height: 78px; }
+.spda-modal-field > .spda-select { width: 100%; min-width: 0; height: 36px; padding: 7px 8px; border: 1px solid var(--spda-line); border-radius: 10px; background: #fff; color: #191919; font: inherit; }
+.spda-note-input { display: flex; align-items: flex-start; gap: 8px; padding: 8px; border: 1px solid var(--spda-line); border-radius: 10px; background: #fff; }
+.spda-note-input:focus-within, .spda-owner-search:focus-within { border-color: var(--spda-brand); outline: 2px solid rgb(17 105 86 / 12%); }
+.spda-note-input > img { flex: none; margin-top: 2px; }
+.spda-note-input > textarea { display: block; width: 100%; height: 84px; min-height: 84px; padding: 0; resize: vertical; border: 0; border-radius: 0; outline: 0; box-shadow: none; background: transparent; color: #191919; font: inherit; line-height: 20px; }
+.spda-note-input > textarea::placeholder { color: var(--spda-muted); }
+.spda-decision-effect { display: flex; align-items: flex-start; gap: 8px; margin: 0; padding: 8px; border-radius: 10px; background: var(--spda-bg); color: #191919; }
+.spda-decision-effect > img { flex: none; margin-top: 1px; }
+.spda-decision-effect > p { margin: 0; font-size: 12px; line-height: 17px; }
+.spda-dialog-hint { margin: 0; color: var(--spda-muted); font-size: 12px; line-height: 17px; }
+.spda-dialog .spda-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin: 0; padding: 0; border: 0; }
+.spda-dialog .spda-dialog-actions > button { display: inline-flex; align-items: center; justify-content: center; flex: 1; height: 36px; min-height: 36px; padding: 8px 12px; border: 1px solid var(--spda-line); border-radius: 10px; background: #fff; color: #191919; font: inherit; line-height: 18px; cursor: pointer; }
+.spda-dialog .spda-dialog-actions > .spda-dialog-submit { border-color: #191919; background: #191919; color: #fff; }
+.spda-dialog .spda-case-form[data-action="approve"] .spda-dialog-submit { border-color: #12a36e; background: #12a36e; }
+.spda-dialog .spda-dialog-actions > .spda-dialog-submit[data-destructive="true"] { border-color: #e3373d; background: #e3373d; color: #fff; }
+.spda-dialog .spda-dialog-actions > button:hover { filter: brightness(.96); }
+.spda-dialog .spda-dialog-actions > button:disabled { opacity: .5; cursor: not-allowed; }
+.spda-dialog :is(button, select, input):focus-visible { outline: 2px solid var(--spda-brand); outline-offset: 2px; }
+.spda-owner-picker { position: relative; }
+.spda-owner-search { display: flex; align-items: center; gap: 8px; height: 36px; padding: 8px; border: 1px solid var(--spda-line); border-radius: 10px; }
+.spda-owner-search > img { flex: none; }
+.spda-owner-search > input { width: 100%; min-width: 0; height: 18px; min-height: 0; border: 0; padding: 0; outline: 0; background: transparent; color: #191919; font: inherit; box-shadow: none; }
+.spda-owner-options { position: relative; z-index: 2; max-height: 240px; margin-top: 6px; padding: 8px; overflow: auto; border: 1px solid var(--spda-line); border-radius: 10px; box-shadow: 0 7px 15px rgb(133 133 133 / 20%); background: #fff; }
+.spda-owner-options > p { margin: 0; padding: 4px 8px 8px; color: var(--spda-muted); font-size: 12px; }
+.spda-owner-options > button { display: flex; align-items: center; width: 100%; gap: 8px; padding: 10px 8px; border: 0; border-radius: 8px; background: transparent; color: #191919; text-align: left; font: inherit; cursor: pointer; }
+.spda-owner-options > button:hover, .spda-owner-options > button[aria-selected="true"] { background: #f3f8f6; }
+.spda-owner-options > button > span:nth-child(2) { display: grid; flex: 1; min-width: 0; gap: 4px; }
+.spda-owner-options strong { font-weight: 400; }
+.spda-owner-options small { color: var(--spda-muted); font-size: 11px; }
+.spda-owner-options small i { display: inline-block; width: 3px; height: 3px; margin: 0 4px 2px; border-radius: 50%; background: currentColor; }
+.spda-owner-options .spda-owner-suggested { color: var(--spda-brand); font-size: 10px; }
+.spda-dialog .spda-preview { display: grid; gap: 12px; max-height: 300px; overflow: auto; margin: 12px 0; padding: 0; list-style: none; }
+.spda-dialog .spda-preview li { padding: 12px; border: 1px solid var(--spda-line); border-radius: 8px; }
+.spda-dialog .spda-preview li strong { font-weight: 500; }
+.spda-dialog .spda-preview-count { margin-top: 12px; font-size: 12px; color: var(--spda-muted); }
+.spda-dialog .spda-field { display: grid; gap: 6px; margin-block: 12px; font-weight: 400; color: var(--spda-muted); }
+.spda-dialog .spda-field :is(select, textarea) { width: 100%; padding: 8px; border: 1px solid var(--spda-line); border-radius: 10px; color: #191919; background: #fff; font: inherit; }
+@media (max-width: 540px) {
+  .spda-dialog:not(.spda-assistant-drawer) { max-height: calc(100dvh - 24px); }
+  .spda-dialog .spda-dialog-actions > button { min-height: 44px; }
+}

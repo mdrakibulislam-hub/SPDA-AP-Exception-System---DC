@@ -5,7 +5,7 @@ import { HeadContent, Outlet, createRootRouteWithContext, useRouterState } from 
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { WorkspaceProvider } from "@/features/exceptions/workspace";
+import { WorkspaceProvider } from "@/features/exceptions/workspace-state";
 import type { trpc } from "@/utils/trpc";
 
 import "../index.css";
@@ -38,7 +38,7 @@ function RootComponent() {
       <HeadContent />
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="light"
         disableTransitionOnChange
         storageKey="vite-ui-theme"
       >

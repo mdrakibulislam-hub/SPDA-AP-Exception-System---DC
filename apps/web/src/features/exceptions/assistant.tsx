@@ -1,10 +1,12 @@
 import { Button } from "@SPDA-AP-Exception-System---DC/ui/components/button";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUp, CalendarDays, ListChecks, Sparkles, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { answerAssistant, applyAssistantReview, type ActionReceipt, type ActionReview, type AssistantReply } from "./assistant-model";
 import { errorMessage, WorkspaceDialog } from "./dialog";
+import { statuses, statusOf, type Invoice } from "./model";
+import { invoiceIssueLabel, invoiceIssueSummary } from "./presentation";
 import type { Workspace } from "./workspace";
 import "./assistant.css";
 
@@ -12,31 +14,43 @@ type Message =
   | { kind: "user"; text: string }
   | ({ kind: "assistant"; receipt?: ActionReceipt[] } & AssistantReply);
 
-const prompts = [
-  { text: "Today’s exceptions", icon: ListChecks },
-  { text: "Summarize the queue", icon: ListChecks },
-  { text: "Last 7 days", icon: CalendarDays },
-];
+const prompts = ["Today's exceptions", "Summarize the queue", "Last 7 days"];
 
-function Mascot({ small = false }: { small?: boolean }) {
-  return <span className="spda-assistant-mascot" data-small={small} aria-hidden="true">
-    <span className="spda-assistant-receipt"><i /><i /><b /></span>
-    <Sparkles className="spda-assistant-sparkle" />
+function Mascot({ launcher = false, welcome = false }: { launcher?: boolean; welcome?: boolean }) {
+  return <span className="spda-assistant-mascot" data-launcher={launcher} data-welcome={welcome} aria-hidden="true">
+    <img className="spda-assistant-face" src={launcher ? "/design/assistant-launcher-face.svg" : "/design/assistant-avatar.svg"} alt="" />
+    {launcher && <span className="spda-assistant-sparkle"><img src="/design/detail-vector.svg" alt="" /></span>}
   </span>;
 }
 
-function CaseList({ items, close, numbered = false }: {
+function CaseList({ items, close, numbered = false, invoices }: {
   items: ActionReceipt[];
   close: () => void;
   numbered?: boolean;
+  invoices?: Invoice[];
 }) {
   const List = numbered ? "ol" : "ul";
   return <List className="spda-assistant-cases" data-numbered={numbered}>
-    {items.map(({ id, title, detail, evidenceKey }) => <li key={`${id}:${detail}`}>
-      <Link to="/exceptions/$invoiceId" params={{ invoiceId: id }} onClick={close}>{title}</Link>
-      <p>{detail}</p>
-      {evidenceKey && <Link to="/evidence/$requestId" params={{ requestId: evidenceKey }} onClick={close}>Open evidence link <ArrowRight size={13} aria-hidden="true" /></Link>}
-    </li>)}
+    {items.map(({ id, title, detail, evidenceKey }) => {
+      const isSummary = numbered && Object.values(statuses).some(status =>
+        detail.startsWith(`${status} · `) || detail.startsWith(`${status} • `));
+      const invoice = isSummary ? invoices?.find(item => item.id === id) : undefined;
+      const label = invoice ? invoiceIssueLabel(invoice) : "";
+      const summary = invoice ? invoiceIssueSummary(invoice) : "";
+      const displayTitle = invoice
+        ? `${invoice.ref === "Not found" ? "Invoice not found" : invoice.ref} - ${invoice.supplier}`
+        : title.replace(" · ", " - ");
+      const displayDetail = invoice
+        ? `${statuses[statusOf(invoice)]} • ${summary.toLowerCase().startsWith(label.toLowerCase()) ? summary : `${label}. ${summary}`}`
+        : detail.replace(" · ", " • ");
+      return <li key={`${id}:${detail}`}>
+        <Link className="spda-assistant-case-title" to="/exceptions/$invoiceId" params={{ invoiceId: id }} onClick={close}>
+          {displayTitle}
+        </Link>
+        <p>{displayDetail}</p>
+        {evidenceKey && <Link className="spda-assistant-evidence" to="/evidence/$requestId" params={{ requestId: evidenceKey }} onClick={close}>Open evidence link <ArrowRight size={13} aria-hidden="true" /></Link>}
+      </li>;
+    })}
   </List>;
 }
 
@@ -55,12 +69,20 @@ export function WorkspaceAssistant({ currentId, workspace }: {
   const log = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const openAssistant = () => setOpen(true);
+    window.addEventListener("spda:open-assistant", openAssistant);
+    return () => window.removeEventListener("spda:open-assistant", openAssistant);
+  }, []);
+
+  useEffect(() => {
     const transcript = log.current;
     const lastReply = transcript?.lastElementChild;
     if (!open || !transcript || !lastReply) return;
     const reply = lastReply.getBoundingClientRect();
+    const previous = lastReply.previousElementSibling;
+    const start = previous?.getAttribute("data-sender") === "user" ? previous : lastReply;
     transcript.scrollTop = reply.height > transcript.clientHeight - 32
-      ? transcript.scrollTop + reply.top - transcript.getBoundingClientRect().top - 16
+      ? transcript.scrollTop + start.getBoundingClientRect().top - transcript.getBoundingClientRect().top - 40
       : transcript.scrollHeight;
   }, [open, messages]);
 
@@ -112,29 +134,31 @@ export function WorkspaceAssistant({ currentId, workspace }: {
   return <>
     <button type="button" className="spda-assistant-launcher" aria-label="Ask assistant" aria-haspopup="dialog" aria-expanded={open}
       onClick={() => setOpen(true)}>
-      <Mascot /><span className="spda-assistant-label">Ask assistant</span>
+      <Mascot launcher /><span className="spda-assistant-label">Ask Assistant</span>
     </button>
     {open && <WorkspaceDialog drawer title="AP assistant" close={close}
-      headerAction={<Button type="button" variant="ghost" size="icon" aria-label="Close assistant" onClick={close}><X size={19} /></Button>}>
+      headerAction={<Button type="button" className="spda-assistant-close" variant="ghost" size="icon" aria-label="Close assistant" onClick={close}>
+        <img src="/design/assistant-multiplication-sign.svg" alt="" />
+      </Button>}>
       <div className="spda-assistant-log" role="log" aria-label="Conversation" ref={log} tabIndex={0}>
         {messages.length === 0 && <div className="spda-assistant-welcome">
-          <Mascot />
-          <h3>How can I help?</h3>
-          <p>Check your exception queue, get a weekly recap, or choose a next step for an invoice.</p>
+          <Mascot launcher welcome />
+          <h3>How can I help today?</h3>
+          <p>Check your exception queue, get a weekly recap, or<br />choose a next step for an invoice.</p>
         </div>}
         {messages.map((message, index) => <article key={index} className="spda-assistant-message" data-sender={message.kind}
           aria-label={message.kind === "user" ? "You" : "AP assistant"}>
-          {message.kind === "assistant" && <Mascot small />}
+          {message.kind === "assistant" && <Mascot />}
           <div className="spda-assistant-bubble">
-            <p>{message.text}</p>
+            <p className={message.kind === "assistant" && message.cases?.length ? "spda-assistant-response-summary" : undefined}>{message.text}</p>
             {message.kind === "assistant" && <>
-              {message.cases && <CaseList items={message.cases} close={close} numbered />}
+              {message.cases && <CaseList items={message.cases} close={close} numbered invoices={visible} />}
               {message.receipt && <CaseList items={message.receipt} close={close} />}
               {message.review && <>
                 <CaseList items={message.review.rows} close={close} />
                 {reviewIndex === index && <div className="spda-assistant-review">
-                  <Button type="button" variant="outline" disabled={saving} onClick={discard}>Discard</Button>
-                  <Button type="button" disabled={saving} onClick={() => void apply(message.review!)}>{saving ? "Applying…" : "Apply actions"}</Button>
+                  <Button type="button" className="spda-assistant-discard" variant="outline" disabled={saving} onClick={discard}>Discard</Button>
+                  <Button type="button" className="spda-assistant-apply" disabled={saving} onClick={() => void apply(message.review!)}>{saving ? "Applying…" : "Apply actions"}</Button>
                 </div>}
               </>}
             </>}
@@ -143,11 +167,11 @@ export function WorkspaceAssistant({ currentId, workspace }: {
       </div>
       <footer className="spda-assistant-footer">
         <div className="spda-assistant-prompts" role="group" aria-label="Suggested prompts">
-          {prompts.map(({ text, icon: Icon }) => <Button type="button" variant="outline" key={text} disabled={saving} onClick={() => send(text)}>
-            <Icon size={14} aria-hidden="true" />{text}
+          {prompts.map(text => <Button type="button" variant="outline" key={text} disabled={saving} onClick={() => send(text)}>
+            {text}
           </Button>)}
           {role === "ap" && <Button type="button" variant="outline" disabled={saving} onClick={() => send(routingPrompt)}>
-            <Sparkles size={14} aria-hidden="true" />{routingPrompt}
+            {routingPrompt}
           </Button>}
         </div>
         <form className="spda-assistant-composer" onSubmit={submit}>
@@ -159,9 +183,10 @@ export function WorkspaceAssistant({ currentId, workspace }: {
                 send(input);
               }
             }} />
-          <Button type="submit" size="icon" aria-label="Send message" disabled={!input.trim() || saving}><ArrowUp size={17} /></Button>
+          <Button type="submit" className="spda-assistant-send" size="icon" aria-label="Send message" disabled={!input.trim() || saving}>
+            <img src="/design/assistant-arrow-turn-backward.svg" alt="" />
+          </Button>
         </form>
-        <p className="spda-assistant-footnote">Responses use the workspace’s sample data and rules.</p>
       </footer>
     </WorkspaceDialog>}
   </>;

@@ -1,0 +1,112 @@
+const imgMultiplicationSign = "https://www.figma.com/api/mcp/asset/8b002907-f695-4d36-b80f-cb862fe92c54.svg";
+const imgArrowTurnBackward = "https://www.figma.com/api/mcp/asset/fc5664b5-f218-43e4-9b3c-2e3f9356ce90.svg";
+
+type AssistantExceptionSummaryProps = {
+  className?: string;
+  details?: string;
+  title?: string;
+};
+
+function AssistantExceptionSummary({ className, details = "Needs attention • Mismatch. Price is 3.1% above the purchase order. Withholding tax is missing.", title = "CPE/2026/0457 - Chattogram Precision Engineering and Fabrication Works Ltd." }: AssistantExceptionSummaryProps) {
+  return (
+    <div className={className || "[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative text-[14px] w-[336px]"} data-node-id="40:9383" data-name="Assistant / Exception summary">
+      <p className="font-['Inter:Medium'] font-medium leading-[22px] not-italic relative shrink-0 text-[#172520] tracking-[-0.5px] w-full" data-node-id="40:9384">
+        {title}
+      </p>
+      <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] tracking-[-0.07px] w-full" data-node-id="40:9385" style={{ fontVariationSettings: '"wdth" 100' }}>
+        {details}
+      </p>
+    </div>
+  );
+}
+
+export default function Frame35() {
+  return (
+    <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex flex-col items-end justify-between overflow-clip p-[16px] relative rounded-bl-[16px] rounded-tl-[16px] size-full" data-node-id="10:6137">
+      <div className="relative shrink-0 size-[16px]" data-node-id="10:6138" data-name="multiplication-sign">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMultiplicationSign} />
+      </div>
+      <div className="content-stretch flex flex-[1_0_0] flex-col gap-[24px] items-end min-h-px overflow-x-clip overflow-y-auto py-[40px] relative w-[408px]" data-node-id="10:6156">
+        <div aria-hidden className="absolute bg-[#f7f7f7] inset-0 pointer-events-none" />
+        <div className="bg-[#191919] border border-[#191919] border-solid content-stretch flex h-[36px] items-center justify-center px-[16px] py-[8px] relative rounded-bl-[10px] rounded-tl-[10px] rounded-tr-[10px] shrink-0" data-node-id="10:6169">
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white tracking-[-0.07px] whitespace-nowrap" data-node-id="10:6170">{`Today's exceptions`}</p>
+        </div>
+        <div className="content-stretch flex gap-[12px] items-start pr-[16px] relative shrink-0 w-full" data-node-id="10:6211">
+          <div className="bg-white border border-[#e0e0e0] border-solid overflow-clip relative rounded-[999px] shrink-0 size-[44px]" data-node-id="10:6212">
+            <div className="absolute flex h-[46.857px] items-center justify-center left-0 top-[7px] w-[37.22px]" data-node-id="10:6213">
+              <div className="flex-none rotate-[12.91deg]">
+                <div className="bg-[#f7f7f7] border-[0.799px] border-[rgba(0,0,0,0.12)] border-solid content-stretch flex flex-col gap-[4.794px] h-[41.5px] items-center pt-[9.588px] relative rounded-tl-[4.794px] rounded-tr-[4.794px] w-[28.673px]" data-name="Text">
+                  <div className="content-stretch flex items-center justify-between relative shrink-0 w-[11.469px]" data-node-id="10:6214">
+                    <div className="bg-[#172d28] h-[5.735px] relative rounded-[2.221px] shrink-0 w-[3.441px]" data-node-id="10:6215" data-name="Italic Text" />
+                    <div className="bg-[#172d28] h-[5.735px] relative rounded-[2.221px] shrink-0 w-[3.441px]" data-node-id="10:6216" data-name="Italic Text" />
+                  </div>
+                  <div className="bg-[#858585] h-[4.588px] relative rounded-bl-[18.351px] rounded-br-[18.351px] shrink-0 w-[9.175px]" data-node-id="10:6217" data-name="Bold Text" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-w-px relative" data-node-id="10:6193">
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Mismatch. Price 3.1% above PO. Withholding tax not shown." />
+            <div className="bg-[#d9d9d9] h-px relative shrink-0 w-full" data-node-id="40:9389" data-name="Exception divider" />
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Short receipt. Goods receipt covers 40 of 60 units." title="88213 - Northgate Packaging (UK) Ltd" />
+            <div className="bg-[#d9d9d9] h-px relative shrink-0 w-full" data-node-id="40:9393" data-name="Exception divider" />
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Possible duplicate of INV 20991A, paid 12 Nov." title="INV 20991 - Brightwater Logistics LLC" />
+            <div className="bg-[#d9d9d9] h-px relative shrink-0 w-full" data-node-id="40:9397" data-name="Exception divider" />
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Unclear invoice. Phone photo. Total and date unclear. No PO." title="Invoice not found - Smith & Okafor Office Supplies" />
+            <div className="bg-[#d9d9d9] h-px relative shrink-0 w-full" data-node-id="40:9401" data-name="Exception divider" />
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Approver away. Approver Farhana Rahman on leave until 8 Dec." title="7Q/4471 - Meghna Agro Chemicals" />
+            <div className="bg-[#d9d9d9] h-px relative shrink-0 w-full" data-node-id="40:9405" data-name="Exception divider" />
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Bank details. Supplier emailed new bank details on 20 Nov." title="553019 - Vantage Industrial Components Inc." />
+            <div className="bg-[#d9d9d9] h-px relative shrink-0 w-full" data-node-id="40:9409" data-name="Exception divider" />
+            <AssistantExceptionSummary className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start relative shrink-0 text-[14px] w-full" details="Needs attention • Currency mismatch. Invoiced in EUR; PO is in GBP." title="7781 - Kowalczyk Brennan Engineering Services GmbH" />
+          </div>
+        </div>
+        <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_-95px_70px_-31px_#f7f7f7]" />
+      </div>
+      <div className="content-stretch flex flex-col gap-[20px] items-end relative shrink-0 w-full" data-node-id="10:6140">
+        <div className="content-center flex flex-wrap gap-[8px] items-center relative shrink-0 w-full" data-node-id="10:6141" data-name="Suggested options">
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:6142">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:6143">{`Today's exceptions`}</p>
+          </div>
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:6144">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:6145">
+              Summarize the queue
+            </p>
+          </div>
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:6146">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:6147">
+              Last 7 days
+            </p>
+          </div>
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:6148">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:6149">
+              Suggest routing
+            </p>
+          </div>
+        </div>
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[87px] items-end p-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="10:6150">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal h-full leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="10:6151">
+            Ask a question or give an instruction…
+          </p>
+          <div className="bg-[#191919] border border-[#191919] border-solid content-stretch flex items-center justify-center px-[12px] py-[8px] relative rounded-[10px] shrink-0 size-[36px]" data-node-id="10:6219">
+            <div className="relative shrink-0 size-[16px]" data-node-id="10:6220" data-name="arrow-turn-backward">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowTurnBackward} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

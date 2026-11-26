@@ -1,0 +1,397 @@
+const imgEllipse1 = "https://www.figma.com/api/mcp/asset/8173b978-5d5f-48b4-acb6-a2e927515d33.png";
+const imgChevronsLeft = "https://www.figma.com/api/mcp/asset/dbe5b4b3-332a-46c1-95b6-c747d56f49eb.svg";
+const imgAnalytics03 = "https://www.figma.com/api/mcp/asset/cf7077be-16a0-496d-87b5-acc1b7d6ceaf.svg";
+const imgInbox = "https://www.figma.com/api/mcp/asset/41a8dbb3-e745-4ef2-ba1c-7d6ac5e355a8.svg";
+const imgPreferenceHorizontal = "https://www.figma.com/api/mcp/asset/24458802-de6a-45fc-bb05-007837cac91b.svg";
+const imgArrowRightFromLine = "https://www.figma.com/api/mcp/asset/5cb4d85f-9e22-40e7-8687-f8ee27806031.svg";
+const imgHome01 = "https://www.figma.com/api/mcp/asset/a439dfd3-6c03-47eb-a5d4-531008ffeacc.svg";
+const imgGreaterThan = "https://www.figma.com/api/mcp/asset/80a2cc9b-b45f-4490-a063-838699465b21.svg";
+const imgSearch01 = "https://www.figma.com/api/mcp/asset/9a2041bd-563c-4b42-83c8-99e5dcfc871e.svg";
+const imgCommand = "https://www.figma.com/api/mcp/asset/efd2cce1-4315-4c55-8ea5-7b58b87f7269.svg";
+const imgNotification01 = "https://www.figma.com/api/mcp/asset/eda2bd16-fe0d-49e0-b8a3-6c20bd8ecf1d.svg";
+const imgArrowDown01 = "https://www.figma.com/api/mcp/asset/a84acc00-f770-4d8d-bed3-b8da9f0f0e05.svg";
+const imgGridline0 = "https://www.figma.com/api/mcp/asset/24de38fd-527b-496f-91d5-11b957baa907.svg";
+const imgOpened110113 = "https://www.figma.com/api/mcp/asset/86fdb137-f3b8-4db5-839f-e1c44f8008cf.svg";
+const imgOpened110114 = "https://www.figma.com/api/mcp/asset/660c4a92-e257-4a71-8a72-8b5b66c341fb.svg";
+const imgJun1 = "https://www.figma.com/api/mcp/asset/ff1eb662-2028-450e-a9e7-102d2f82d080.svg";
+const imgGround = "https://www.figma.com/api/mcp/asset/1ce8fde5-0ee8-4be1-805d-2b9e367626a0.svg";
+const imgTarget = "https://www.figma.com/api/mcp/asset/a264e58f-0138-41e0-b263-829455e04ea8.svg";
+const imgMascotArms = "https://www.figma.com/api/mcp/asset/7eb0ab35-58a9-421d-9b52-7d6e9586fee5.svg";
+const imgMascotFeet = "https://www.figma.com/api/mcp/asset/744adf3e-0f1e-4789-a76e-5a11451acbb5.svg";
+const imgVector = "https://www.figma.com/api/mcp/asset/98bbafa6-3376-4631-adb7-ebebe83756ed.svg";
+const imgArrow = "https://www.figma.com/api/mcp/asset/9f22d057-dcca-4079-a1aa-2facfacecae8.svg";
+const imgVector1 = "https://www.figma.com/api/mcp/asset/83bc1af5-0dbf-441e-8518-a685fe4da9c8.svg";
+
+export default function DashboardV1() {
+  return (
+    <div className="bg-[#f7f7f7] content-stretch flex items-center pr-[8px] py-[8px] relative size-full" data-node-id="16:20312" data-name="Dashboard V1">
+      <div className="bg-[#f7f7f7] content-stretch flex flex-col gap-[24px] h-[1024px] items-start overflow-clip p-[16px] relative shrink-0 w-[280px]" data-node-id="16:20313">
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] items-center p-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="16:20314">
+          <div className="relative shrink-0 size-[30px]" data-node-id="16:20315">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" height="30" src={imgEllipse1} width="30" />
+          </div>
+          <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col font-['Inter:Regular'] font-normal gap-[4px] items-start justify-center leading-[normal] min-w-px not-italic relative whitespace-nowrap" data-node-id="16:20316">
+            <p className="relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px]" data-node-id="16:20317">
+              Md Rakibul Islam
+            </p>
+            <p className="relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px]" data-node-id="16:20318">
+              AP Manager
+            </p>
+          </div>
+          <div className="relative shrink-0 size-[16px]" data-node-id="16:20319" data-name="chevrons-left">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronsLeft} />
+          </div>
+        </div>
+        <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start min-h-px relative w-full" data-node-id="16:20322">
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="16:20323">
+            <div className="relative shrink-0 size-[16px]" data-node-id="16:20324" data-name="analytics-03">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAnalytics03} />
+            </div>
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#191919] text-[14px] tracking-[-0.07px]" data-node-id="16:20330">
+              Dashboard
+            </p>
+          </div>
+          <div className="content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="16:20331">
+            <div className="relative shrink-0 size-[16px]" data-node-id="16:20332" data-name="inbox">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInbox} />
+            </div>
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20335">
+              Exceptions
+            </p>
+          </div>
+          <div className="content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="29:13922">
+            <div className="relative shrink-0 size-[16px]" data-node-id="29:13923" data-name="preference-horizontal">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPreferenceHorizontal} />
+            </div>
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="29:13933">
+              Preference
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="29:13915">
+          <div className="relative shrink-0 size-[16px]" data-node-id="29:13916" data-name="arrow-right-from-line">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowRightFromLine} />
+          </div>
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#de494c] text-[14px] tracking-[-0.07px]" data-node-id="29:13920">
+            Logout
+          </p>
+        </div>
+      </div>
+      <div className="bg-white border border-[rgba(0,0,0,0.12)] border-solid content-stretch flex flex-col gap-[8px] h-full items-start overflow-clip relative rounded-[16px] shrink-0 w-[1152px]" data-node-id="16:20363">
+        <div className="bg-white content-stretch flex gap-[8px] h-[56px] items-center overflow-clip pl-[20px] pr-[12px] py-[7px] relative shrink-0 w-full" data-node-id="16:20364">
+          <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="16:20365">
+            <div className="relative shrink-0 size-[16px]" data-node-id="16:20366" data-name="home-01">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgHome01} />
+            </div>
+            <div className="relative shrink-0 size-[16px]" data-node-id="16:20368" data-name="greater-than">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGreaterThan} />
+            </div>
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20370">
+              Dashboard
+            </p>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-[248px]" data-node-id="16:20371">
+            <div className="relative shrink-0 size-[16px]" data-node-id="16:20372" data-name="search-01">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSearch01} />
+            </div>
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20375">
+              Exceptions
+            </p>
+            <div className="content-stretch flex gap-[4px] items-center px-[4px] relative shrink-0" data-node-id="16:20376">
+              <div className="relative shrink-0 size-[12px]" data-node-id="16:20377" data-name="command">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgCommand} />
+              </div>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="16:20383">
+                F
+              </p>
+            </div>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex items-center justify-center px-[12px] py-[8px] relative rounded-[10px] shrink-0 size-[36px]" data-node-id="16:20384">
+            <div className="relative shrink-0 size-[16px]" data-node-id="16:20385" data-name="notification-01">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNotification01} />
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-[1_0_0] flex-col gap-[24px] items-start min-h-px pb-[16px] px-[16px] relative w-full" data-node-id="16:20388">
+          <div className="content-stretch flex gap-[8px] items-center justify-end relative shrink-0 w-full" data-node-id="16:20389">
+            <p className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20390" style={{ fontVariationSettings: '"wdth" 100' }}>
+              Time period
+            </p>
+            <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[4px] h-[36px] items-center px-[12px] py-[8px] relative rounded-[10px] shrink-0" data-node-id="16:20391">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20392">
+                Last 6 months
+              </p>
+              <div className="relative shrink-0 size-[16px]" data-node-id="16:20393" data-name="arrow-down-01">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowDown01} />
+              </div>
+            </div>
+          </div>
+          <div className="[word-break:break-word] content-stretch flex gap-[16px] items-start relative shrink-0 w-full whitespace-nowrap" data-node-id="16:20395">
+            <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20396" data-name="List Item">
+              <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20397" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Assigned
+              </p>
+              <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20398">
+                10
+              </p>
+            </div>
+            <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20399" data-name="List Item">
+              <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20400" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Open now
+              </p>
+              <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20401">
+                05
+              </p>
+            </div>
+            <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20402" data-name="List Item">
+              <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20403" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Approved
+              </p>
+              <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20404">
+                03
+              </p>
+            </div>
+            <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20405" data-name="List Item">
+              <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20406" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Rejected
+              </p>
+              <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20407">
+                02
+              </p>
+            </div>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-col gap-[8px] items-start justify-center pl-[24px] pr-[16px] py-[16px] relative rounded-[12px] shrink-0 w-full" data-node-id="16:20408" data-name="List Item">
+            <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="16:20409">
+              <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] min-w-full not-italic relative shrink-0 text-[#172520] text-[16px] tracking-[-0.5px] w-[min-content]" data-node-id="16:20410">
+                Issues opened over time
+              </p>
+              <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20411" style={{ fontVariationSettings: '"wdth" 100' }}>
+                Opened
+              </p>
+            </div>
+            <div className="h-[240px] relative shrink-0 w-full" data-node-id="16:20412" data-name="Issues opened · Jun–Nov">
+              <div className="absolute h-0 left-[24px] top-[204px] w-[1044px]" data-node-id="16:20413" data-name="Gridline · 0">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgGridline0} />
+                </div>
+              </div>
+              <p className="-translate-x-full [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[15px] not-italic text-[#52635e] text-[11px] text-right top-[196px] w-[15px]" data-node-id="16:20414">
+                0
+              </p>
+              <div className="absolute h-0 left-[24px] top-[142.67px] w-[1044px]" data-node-id="16:20415" data-name="Gridline · 1">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgGridline0} />
+                </div>
+              </div>
+              <p className="-translate-x-full [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[15px] not-italic text-[#52635e] text-[11px] text-right top-[134.67px] w-[15px]" data-node-id="16:20416">
+                1
+              </p>
+              <div className="absolute h-0 left-[24px] top-[81.33px] w-[1044px]" data-node-id="16:20417" data-name="Gridline · 2">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgGridline0} />
+                </div>
+              </div>
+              <p className="-translate-x-full [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[15px] not-italic text-[#52635e] text-[11px] text-right top-[73.33px] w-[15px]" data-node-id="16:20418">
+                2
+              </p>
+              <div className="absolute h-0 left-[24px] top-[20px] w-[1044px]" data-node-id="16:20419" data-name="Gridline · 3">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgGridline0} />
+                </div>
+              </div>
+              <p className="-translate-x-full [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[15px] not-italic text-[#52635e] text-[11px] text-right top-[12px] w-[15px]" data-node-id="16:20420">
+                3
+              </p>
+              <div className="absolute h-[184px] left-[24px] top-[20px] w-[1044px]" data-node-id="16:20421" data-name="Opened · 1, 1, 0, 1, 1, 3">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgOpened110113} />
+              </div>
+              <div className="absolute h-[184px] left-[24px] top-[20px] w-[1044px]" data-node-id="16:20422" data-name="Opened · 1, 1, 0, 1, 1, 4">
+                <div className="absolute inset-[-0.42%_0_3.64%_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgOpened110114} />
+                </div>
+              </div>
+              <div className="absolute left-[20.5px] size-[7px] top-[139.17px]" data-node-id="16:20423" data-name="Jun · 1">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgJun1} />
+              </div>
+              <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[24px] not-italic text-[#52635e] text-[11px] text-center top-[214px] w-[40px]" data-node-id="16:20424">
+                Jun
+              </p>
+              <div className="absolute left-[229.3px] size-[7px] top-[141.17px]" data-node-id="16:20425" data-name="Jul · 1">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgJun1} />
+              </div>
+              <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[232.8px] not-italic text-[#52635e] text-[11px] text-center top-[214px] w-[40px]" data-node-id="16:20426">
+                Jul
+              </p>
+              <div className="absolute left-[438.1px] size-[7px] top-[192.5px]" data-node-id="16:20427" data-name="Aug · 0">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgJun1} />
+              </div>
+              <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[441.6px] not-italic text-[#52635e] text-[11px] text-center top-[214px] w-[40px]" data-node-id="16:20428">
+                Aug
+              </p>
+              <div className="absolute left-[646.9px] size-[7px] top-[141.17px]" data-node-id="16:20429" data-name="Sep · 1">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgJun1} />
+              </div>
+              <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[650.4px] not-italic text-[#52635e] text-[11px] text-center top-[214px] w-[40px]" data-node-id="16:20430">
+                Sep
+              </p>
+              <div className="absolute left-[855.7px] size-[7px] top-[132.17px]" data-node-id="16:20431" data-name="Oct · 1">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgJun1} />
+              </div>
+              <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[859.2px] not-italic text-[#52635e] text-[11px] text-center top-[214px] w-[40px]" data-node-id="16:20432">
+                Oct
+              </p>
+              <div className="absolute left-[1064.5px] size-[7px] top-[16.5px]" data-node-id="16:20433" data-name="Nov · 3">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgJun1} />
+              </div>
+              <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[16px] leading-[16px] left-[1056px] not-italic text-[#52635e] text-[11px] text-center top-[214px] w-[40px]" data-node-id="16:20434">
+                Nov
+              </p>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="16:20435">
+            <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="16:20436">
+              <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20437">
+                Queue signals
+              </p>
+            </div>
+            <div className="[word-break:break-word] content-stretch flex gap-[16px] items-start relative shrink-0 w-full whitespace-nowrap" data-node-id="16:20438">
+              <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20439" data-name="List Item">
+                <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20440" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  Mismatches
+                </p>
+                <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20441">
+                  03
+                </p>
+              </div>
+              <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20442" data-name="List Item">
+                <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20443" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  Bank holds
+                </p>
+                <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20444">
+                  01
+                </p>
+              </div>
+              <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20445" data-name="List Item">
+                <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20446" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  Waiting for proof
+                </p>
+                <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20447">
+                  0
+                </p>
+              </div>
+              <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start justify-center min-w-px pl-[24px] pr-[16px] py-[16px] relative rounded-[12px]" data-node-id="16:20448" data-name="List Item">
+                <p className="font-['SF_Pro:Regular'] font-normal leading-[20px] relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="16:20449" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  Avg. time to decision
+                </p>
+                <p className="font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[24px] tracking-[-0.5px]" data-node-id="16:20450">
+                  —
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-col gap-[8px] items-start justify-center overflow-clip pl-[24px] pr-[16px] py-[16px] relative rounded-[12px] shrink-0 w-full" data-node-id="16:20451" data-name="List Item">
+            <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[24px] not-italic relative shrink-0 text-[#172520] text-[16px] tracking-[-0.5px] whitespace-nowrap" data-node-id="16:20452">
+              Business targets
+            </p>
+            <ol className="[word-break:break-word] block font-['SF_Pro:Regular'] font-normal leading-[0] list-decimal relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20453" start="1" style={{ fontVariationSettings: '"wdth" 100' }}>
+              <li className="ms-[21px]">
+                <span className="leading-[20px]">Resolve exceptions in 3 days on average, down from 9.</span>
+              </li>
+            </ol>
+            <ol className="[word-break:break-word] block font-['SF_Pro:Regular'] font-normal leading-[0] list-decimal relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20454" start="2" style={{ fontVariationSettings: '"wdth" 100' }}>
+              <li className="ms-[21px]">
+                <span className="leading-[20px]">Reduce duplicate or fraudulent payments to zero.</span>
+              </li>
+            </ol>
+            <ol className="[word-break:break-word] block font-['SF_Pro:Regular'] font-normal leading-[0] list-decimal relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20455" start="3" style={{ fontVariationSettings: '"wdth" 100' }}>
+              <li className="ms-[21px]">
+                <span className="leading-[20px]">Close the month in 5 working days, down from 8.</span>
+              </li>
+            </ol>
+            <ol className="[word-break:break-word] block font-['SF_Pro:Regular'] font-normal leading-[0] list-decimal relative shrink-0 text-[#858585] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20456" start="4" style={{ fontVariationSettings: '"wdth" 100' }}>
+              <li className="ms-[21px]">
+                <span className="leading-[20px]">Cut supplier status questions from about 300 a month to 150.</span>
+              </li>
+            </ol>
+            <div className="absolute bottom-[-61px] h-[230px] right-[10px] w-[276px]" data-node-id="16:20457" data-name="Mascot · On target">
+              <div className="absolute h-[230px] left-0 overflow-clip top-0 w-[276px]" data-node-id="16:20458" data-name="Frame">
+                <div className="absolute inset-[80.33%_12.5%_11.67%_14.72%]" data-node-id="16:20459" data-name="Ground">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGround} />
+                </div>
+                <div className="absolute inset-[18%_14.17%_15.67%_41.94%]" data-node-id="16:20461" data-name="Target">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTarget} />
+                </div>
+                <div className="absolute contents inset-[35.95%_54.72%_17%_14.09%]" data-node-id="16:20472" data-name="Mascot">
+                  <div className="absolute inset-[52%_54.72%_28.67%_14.09%]" data-node-id="16:20473" data-name="MascotArms">
+                    <div className="absolute inset-[-3.45%_-1.78%_-4.31%_-2.23%]">
+                      <img alt="" className="block max-w-none size-full" src={imgMascotArms} />
+                    </div>
+                  </div>
+                  <div className="absolute inset-[77%_68.61%_17%_17.22%]" data-node-id="16:20477" data-name="MascotFeet">
+                    <div className="absolute inset-[-13.89%_-4.9%]">
+                      <img alt="" className="block max-w-none size-full" src={imgMascotFeet} />
+                    </div>
+                  </div>
+                  <div className="absolute inset-[35.95%_62.1%_20.19%_15.69%]" data-node-id="16:20480" data-name="Vector">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+                  </div>
+                  <div className="absolute flex inset-[45.26%_68.19%_49.64%_25.2%] items-center justify-center" data-node-id="16:20481" style={{ containerType: "size" }}>
+                    <div className="flex-none h-[hypot(-9.54741cqw,70.3133cqh)] rotate-[11.92deg] w-[hypot(90.4526cqw,29.6867cqh)]">
+                      <div className="content-stretch flex items-center justify-between relative w-full">
+                        <div className="bg-[#172d28] h-[8.426px] relative rounded-[3.263px] shrink-0 w-[5.056px]" data-node-id="16:20482" data-name="Italic Text" />
+                        <div className="bg-[#172d28] h-[8.426px] relative rounded-[3.263px] shrink-0 w-[5.056px]" data-node-id="16:20483" data-name="Italic Text" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute flex inset-[52.36%_70.24%_43.48%_24.46%] items-center justify-center" data-node-id="16:20484" style={{ containerType: "size" }}>
+                    <div className="flex-none h-[hypot(-10.2827cqw,68.5659cqh)] rotate-[12.91deg] w-[hypot(89.7173cqw,31.4341cqh)]">
+                      <div className="bg-[#858585] relative rounded-bl-[26.964px] rounded-br-[26.964px] size-full" data-name="Bold Text" />
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute inset-[13%_8.61%_55.67%_63.89%]" data-node-id="16:20485" data-name="Arrow">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrow} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-white border border-[#e0e0e0] border-solid bottom-[24px] content-stretch flex gap-[8px] h-[56px] items-center overflow-clip pl-[56px] pr-[16px] py-[16px] right-[24px] rounded-[10px] shadow-[0px_2px_1px_0px_rgba(133,133,133,0.09),0px_4px_2px_0px_rgba(133,133,133,0.09),0px_8px_4px_0px_rgba(133,133,133,0.09),0px_16px_8px_0px_rgba(133,133,133,0.09),0px_32px_16px_0px_rgba(133,133,133,0.09)]" data-node-id="16:20490" data-name="AI Assistant">
+        <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="16:20491">
+          Ask Assistant
+        </p>
+        <div className="absolute flex h-[58.647px] items-center justify-center left-[3.34px] top-[7px] w-[46.585px]" data-node-id="16:20492">
+          <div className="flex-none rotate-[12.91deg]">
+            <div className="bg-[#f7f7f7] border border-[rgba(0,0,0,0.12)] border-solid content-stretch flex flex-col gap-[6px] h-[51.942px] items-center pt-[12px] relative rounded-tl-[6px] rounded-tr-[6px] w-[35.887px]" data-name="Text">
+              <div className="content-stretch flex items-center justify-between relative shrink-0 w-[14.355px]" data-node-id="16:20493">
+                <div className="bg-[#172d28] h-[7.177px] relative rounded-[2.78px] shrink-0 w-[4.306px]" data-node-id="16:20494" data-name="Italic Text" />
+                <div className="bg-[#172d28] h-[7.177px] relative rounded-[2.78px] shrink-0 w-[4.306px]" data-node-id="16:20495" data-name="Italic Text" />
+              </div>
+              <div className="bg-[#858585] h-[5.742px] relative rounded-bl-[22.968px] rounded-br-[22.968px] shrink-0 w-[11.484px]" data-node-id="16:20496" data-name="Bold Text" />
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex items-center justify-center left-[38px] size-[16.922px] top-[4px]" data-node-id="16:20497">
+          <div className="flex-none rotate-[40.97deg]">
+            <div className="relative size-[11.995px]" data-name="Vector">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector1} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

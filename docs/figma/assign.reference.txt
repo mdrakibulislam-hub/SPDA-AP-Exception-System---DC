@@ -1,0 +1,139 @@
+const imgEllipse1 = "https://www.figma.com/api/mcp/asset/3a42273f-5606-49e4-8ebc-47b066651da8.png";
+const imgMultiplicationSign = "https://www.figma.com/api/mcp/asset/95e31d94-515c-439f-a74c-9c8f06878f13.svg";
+const imgSearch01 = "https://www.figma.com/api/mcp/asset/92de6320-4980-4be8-a9ff-08495e23eb8a.svg";
+const imgNote01 = "https://www.figma.com/api/mcp/asset/530b6578-0142-479b-9ef7-595c0d209843.svg";
+const imgEllipse3 = "https://www.figma.com/api/mcp/asset/9284e25e-2352-45f7-ace1-db9662e73165.svg";
+
+export default function Group4() {
+  return (
+    <div className="contents relative size-full" data-node-id="14:9834">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-col gap-[12px] items-start justify-center left-1/2 p-[16px] rounded-[10px] top-[calc(50%-20px)] w-[440px]" data-node-id="14:9835">
+        <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0 w-full" data-node-id="14:9836">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[22.88px] min-w-px not-italic relative text-[#172520] text-[16px] tracking-[-0.5px]" data-node-id="14:9837">
+            Assign a Budget Owner
+          </p>
+          <div className="relative shrink-0 size-[16px]" data-node-id="14:9838" data-name="multiplication-sign">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMultiplicationSign} />
+          </div>
+        </div>
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[36px] items-center p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="14:9840">
+          <div className="relative shrink-0 size-[16px]" data-node-id="14:9841" data-name="search-01">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSearch01} />
+          </div>
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="14:9844">
+            Search Budget Owner...
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="14:9845">
+          <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="14:9846">
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="14:9847">
+              Note for Assignee
+            </p>
+          </div>
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[102px] items-start p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="14:9848">
+            <div className="relative shrink-0 size-[16px]" data-node-id="14:9849" data-name="note-01">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNote01} />
+            </div>
+            <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="14:9853">
+              Add Note for Assignee
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center justify-end relative shrink-0 w-full" data-node-id="14:9854" data-name="Bulk actions">
+          <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] h-[36px] items-center justify-center min-w-px px-[16px] py-[8px] relative rounded-[10px]" data-node-id="14:9855">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="14:9856">
+              Cancel
+            </p>
+          </div>
+          <div className="bg-[#191919] border border-[#191919] border-solid content-stretch flex flex-[1_0_0] h-[36px] items-center justify-center min-w-px px-[16px] py-[8px] relative rounded-[10px]" data-node-id="14:9857">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white tracking-[-0.07px] whitespace-nowrap" data-node-id="14:9858">
+              Add Assignee
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-white border border-[#e0e0e0] border-solid content-stretch drop-shadow-[0px_7px_14.5px_rgba(133,133,133,0.2)] flex flex-col gap-[4px] items-start justify-center left-1/2 p-[8px] rounded-[10px] top-[calc(50%+49.5px)] w-[406px]" data-node-id="14:9859">
+        <div className="content-stretch flex items-center justify-center pb-[4px] pt-[8px] px-[8px] relative shrink-0 w-full" data-node-id="14:9860">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="14:9861">
+            Recently Assigned
+          </p>
+        </div>
+        <a className="content-stretch cursor-pointer flex gap-[8px] items-center p-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="14:9862">
+          <div className="relative shrink-0 size-[30px]" data-node-id="14:9863">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" height="30" src={imgEllipse1} width="30" />
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start justify-center min-w-px relative" data-node-id="14:9864">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] text-left tracking-[-0.07px] whitespace-nowrap" data-node-id="14:9865">
+              Md Rakibul Islam
+            </p>
+            <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="25:16">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] text-left tracking-[-0.06px] whitespace-nowrap" data-node-id="14:9866">
+                ID: EMP009
+              </p>
+              <div className="relative shrink-0 size-[4px]" data-node-id="25:19">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse3} />
+              </div>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] text-left tracking-[-0.06px] whitespace-nowrap" data-node-id="25:15">
+                3 assigned tasks
+              </p>
+            </div>
+          </div>
+        </a>
+        <div className="content-stretch flex gap-[8px] items-center p-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="25:21">
+          <div className="relative shrink-0 size-[30px]" data-node-id="25:22">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" height="30" src={imgEllipse1} width="30" />
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start justify-center min-w-px relative" data-node-id="25:23">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="25:24">
+              Md Rakibul Islam
+            </p>
+            <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="25:25">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="25:26">
+                ID: EMP009
+              </p>
+              <div className="relative shrink-0 size-[4px]" data-node-id="25:27">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse3} />
+              </div>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="25:28">
+                3 assigned tasks
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center p-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="25:34">
+          <div className="relative shrink-0 size-[30px]" data-node-id="25:35">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" height="30" src={imgEllipse1} width="30" />
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start justify-center min-w-px relative" data-node-id="25:36">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="25:37">
+              Md Rakibul Islam
+            </p>
+            <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="25:38">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="25:39">
+                ID: EMP009
+              </p>
+              <div className="relative shrink-0 size-[4px]" data-node-id="25:40">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse3} />
+              </div>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="25:41">
+                3 assigned tasks
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

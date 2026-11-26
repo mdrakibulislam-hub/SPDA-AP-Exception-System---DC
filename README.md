@@ -23,11 +23,13 @@ Drizzle creates `local.db` in the repository root and applies the initial auth s
 
 ## Try the AP prototype
 
-Open the [workspace](http://localhost:3001). Select **Ask assistant** to list today’s exceptions, summarize the queue, or get a seven-day recap. In the AP specialist view, try **Suggest routing → Route suggested cases** or type `Route Meghna to the Bangladesh backup owner, then request evidence for Northgate`. Review the draft and apply it to update the cases.
+Open the [workspace](http://localhost:3001). The interface follows the new Figma Prototype and Core flow pages: the dashboard, role-specific invoice queues, assignment and decision dialogs, case timelines, supplier uploads, and assistant drawer. See the [implementation plan](docs/design-migration.md) and [verification report with screenshots](docs/design-verification.md).
 
-Open **Exceptions → Assigned → Meghna Agro Chemicals** to view its routing history. **Preview as** switches between the AP, approver, controller, and supplier views. The assessment guide is in the workspace navigation.
+Click the profile card to switch between **AP Manager**, **Budget Owner**, **Department head**, **Finance Controller**, and **Supplier**. The sidebar provides Dashboard, the role-specific queue, Preference, and Logout; suppliers see their own invoices. The header searches exceptions and supports **Command/Ctrl + F**. Counts, decision states, accounting periods, and timelines reflect actual saved cases rather than the illustrative totals in Figma.
 
-In the budget owner view, Meghna is waiting for reassignment because Farhana is away. Select **Reassign in AP**, send the request to the suggested backup owner, and select **Preview as budget owner**. **Approve** and **Reject** are available on the case and in **My approvals** once the current reviewer can act. Both decisions ask for a reason and record it in the timeline. **Request evidence** creates a link you can open immediately. Choose a file or use **Use sample file** to try the upload in the same browser.
+Open **Exceptions → Assigned → Meghna Agro Chemicals** to inspect an unavailable-owner case. **Reassign in AP** returns it to the assignment flow. Search/select an available owner, add an optional note, and then switch to Budget Owner through the profile card. **Approve** and **Reject** are available only when the current reviewer can act; both require a reason and record it in the timeline. **Request evidence** creates an upload link. Choose a nonempty TXT, PDF, JPG, or PNG file up to 1 MB and submit it to attach proof to the case. Supplier views hide internal notes and reviewer-only information.
+
+Select **Ask Assistant** for today’s exceptions, queue summaries, seven-day recaps, or routing suggestions. Try `Route Meghna to the Bangladesh backup owner, then request evidence for Northgate`; review the proposed actions before applying them. Existing coverage, bank-verification, stale-state, and accounting-cutoff safeguards remain active.
 
 For the prototype alone, `bun run dev:web` is enough after configuring `apps/web/.env`. The role switcher, sample cases, audit history, and uploads use browser storage. Evidence links open in the same browser profile and web origin. The assistant, AI overview, drafts, and text checks use local rules. The sign-in and authenticated dashboard still use the API.
 
@@ -35,7 +37,7 @@ The original standalone guide and source PDF are in the parent folder. The web a
 
 Exceptions and invoice details show the accounting period and final-approval cutoff. The prototype starts each sample invoice in its opening month and moves outstanding invoices to the next period after the third working day. Each move appears in the decision timeline. The prototype uses local time in New York, London, and Dhaka, counts Saturday and Sunday as weekends for the US and UK and Friday and Saturday for Bangladesh, and uses a weekend-only calendar. Open the workspace to catch up on missed cutoffs.
 
-The supplier thumbnails illustrate each sample company’s industry. [CNC machining](https://www.pexels.com/photo/close-up-photo-of-metal-tool-10406128/) · [Packaging](https://www.pexels.com/photo/close-up-of-boxes-5025503/) · [Freight](https://www.pexels.com/photo/truck-on-road-near-park-9754798/) · [Office supplies](https://www.pexels.com/photo/flat-lay-shot-of-desk-with-office-items-9930282/) · [Agriculture](https://www.pexels.com/photo/plantation-with-green-crops-growing-in-agricultural-farm-6216870/) · [Components](https://www.pexels.com/photo/a-pile-of-metal-spare-parts-7568430/) · [Engineering](https://www.pexels.com/photo/modern-industrial-production-facility-interior-38804512/)
+The old supplier photography has been replaced with the Figma initials avatars. Exact exported icons and mascot artwork are served locally from `apps/web/public/design`; the variable Inter font and its OFL license are in `apps/web/public/fonts`.
 
 ## Workspace layout
 

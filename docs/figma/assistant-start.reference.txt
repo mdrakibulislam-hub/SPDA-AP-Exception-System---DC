@@ -1,0 +1,86 @@
+const imgMultiplicationSign = "https://www.figma.com/api/mcp/asset/77c0b11e-bcca-42bd-9045-9f28f326fd95.svg";
+const imgArrowTurnBackward = "https://www.figma.com/api/mcp/asset/77a21f97-032c-44d2-b126-fe64fd6db6bc.svg";
+const imgVector = "https://www.figma.com/api/mcp/asset/a58cfd35-59e9-4858-b2eb-8c68c184e759.svg";
+
+export default function Frame35() {
+  return (
+    <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex flex-col items-end justify-between overflow-clip p-[16px] relative rounded-bl-[16px] rounded-tl-[16px] size-full" data-node-id="10:5918">
+      <div className="relative shrink-0 size-[16px]" data-node-id="10:5919" data-name="multiplication-sign">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMultiplicationSign} />
+      </div>
+      <div className="content-stretch flex flex-col gap-[20px] items-end relative shrink-0 w-full" data-node-id="10:5921">
+        <div className="content-center flex flex-wrap gap-[8px] items-center relative shrink-0 w-full" data-node-id="10:5922" data-name="Suggested options">
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:5923">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:5924">{`Today's exceptions`}</p>
+          </div>
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:5925">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:5926">
+              Summarize the queue
+            </p>
+          </div>
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:5927">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:5928">
+              Last 7 days
+            </p>
+          </div>
+          <div className="bg-[#f7f7f7] border border-[#e0e0e0] border-solid content-stretch flex h-[32px] items-center p-[8px] relative rounded-[10px] shrink-0" data-node-id="10:5929">
+            <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px] whitespace-nowrap" data-node-id="10:5930">
+              Suggest routing
+            </p>
+          </div>
+        </div>
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[87px] items-end p-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="10:5931">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal h-full leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="10:5932">
+            Ask a question or give an instruction…
+          </p>
+          <div className="bg-[#191919] border border-[#191919] border-solid content-stretch flex items-center justify-center px-[12px] py-[8px] relative rounded-[10px] shrink-0 size-[36px]" data-node-id="10:5933">
+            <div className="relative shrink-0 size-[16px]" data-node-id="10:5934" data-name="arrow-turn-backward">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowTurnBackward} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="-translate-y-1/2 absolute content-stretch flex flex-col gap-[8px] h-[136px] items-center justify-center left-[calc(3.64%-0.93px)] right-[calc(3.64%-0.93px)] top-[calc(50%+0.5px)]" data-node-id="10:5937">
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex gap-[8px] h-[56px] items-center overflow-clip pl-[56px] pr-[16px] py-[16px] relative rounded-[10px] shadow-[0px_2px_1px_0px_rgba(133,133,133,0.09),0px_4px_2px_0px_rgba(133,133,133,0.09),0px_8px_4px_0px_rgba(133,133,133,0.09),0px_16px_8px_0px_rgba(133,133,133,0.09),0px_32px_16px_0px_rgba(133,133,133,0.09)] shrink-0 w-[74px]" data-node-id="10:5938" data-name="AI Assistant">
+          <div className="absolute flex h-[58.647px] items-center justify-center left-[10.34px] top-[7px] w-[46.585px]" data-node-id="10:5939">
+            <div className="flex-none rotate-[12.91deg]">
+              <div className="bg-[#f7f7f7] border border-[rgba(0,0,0,0.12)] border-solid content-stretch flex flex-col gap-[6px] h-[51.942px] items-center pt-[12px] relative rounded-tl-[6px] rounded-tr-[6px] w-[35.887px]" data-name="Text">
+                <div className="content-stretch flex items-center justify-between relative shrink-0 w-[14.355px]" data-node-id="10:5940">
+                  <div className="bg-[#172d28] h-[7.177px] relative rounded-[2.78px] shrink-0 w-[4.306px]" data-node-id="10:5941" data-name="Italic Text" />
+                  <div className="bg-[#172d28] h-[7.177px] relative rounded-[2.78px] shrink-0 w-[4.306px]" data-node-id="10:5942" data-name="Italic Text" />
+                </div>
+                <div className="bg-[#858585] h-[5.742px] relative rounded-bl-[22.968px] rounded-br-[22.968px] shrink-0 w-[11.484px]" data-node-id="10:5943" data-name="Bold Text" />
+              </div>
+            </div>
+          </div>
+          <div className="absolute flex items-center justify-center left-[45px] size-[16.922px] top-[4px]" data-node-id="10:5944">
+            <div className="flex-none rotate-[40.97deg]">
+              <div className="relative size-[11.995px]" data-name="Vector">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold h-[24px] leading-[24px] min-w-full not-italic relative shrink-0 text-[#172520] text-[16px] text-center tracking-[-0.5px] w-[min-content]" data-node-id="10:5945">
+          How can I help today?
+        </p>
+        <div className="[word-break:break-word] font-['SF_Pro:Regular'] font-normal h-[40px] leading-[0] min-w-full relative shrink-0 text-[#858585] text-[14px] text-center tracking-[-0.07px] w-[min-content]" data-node-id="10:5946" style={{ fontVariationSettings: '"wdth" 100' }}>
+          <p className="leading-[20px] mb-0">Check your exception queue, get a weekly recap, or</p>
+          <p className="leading-[20px]">choose a next step for an invoice.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

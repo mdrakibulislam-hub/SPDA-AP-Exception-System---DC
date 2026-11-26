@@ -1,0 +1,71 @@
+const imgMultiplicationSign = "https://www.figma.com/api/mcp/asset/3db0336f-603e-40b2-9ab0-b167fcfb23e1.svg";
+const imgNote01 = "https://www.figma.com/api/mcp/asset/8d570b41-f90f-4afb-8ad3-200d58a3b49e.svg";
+
+export default function Frame20() {
+  return (
+    <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-col gap-[12px] items-start justify-center p-[16px] relative rounded-[10px] size-full" data-node-id="14:9683">
+      <div className="content-stretch flex gap-[8px] items-center justify-center relative shrink-0 w-full" data-node-id="14:9684">
+        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[22.88px] min-w-px not-italic relative text-[#172520] text-[16px] tracking-[-0.5px]" data-node-id="14:9685">
+          Request for evidence
+        </p>
+        <div className="relative shrink-0 size-[16px]" data-node-id="14:9686" data-name="multiplication-sign">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMultiplicationSign} />
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[8px] items-center py-[12px] relative rounded-[10px] shrink-0 w-full" data-node-id="15:11260">
+        <div className="bg-[#e8f3ef] content-stretch flex items-center justify-center overflow-clip relative rounded-[16px] shrink-0 size-[32px]" data-node-id="15:11261" data-name="Text">
+          <p className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#a4c2ba] text-[9.143px] tracking-[-0.1339px] whitespace-nowrap" data-node-id="15:11262">
+            CP
+          </p>
+        </div>
+        <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col font-['Inter:Regular'] font-normal gap-[4px] items-start justify-center leading-[normal] min-w-px not-italic relative whitespace-nowrap" data-node-id="15:11263">
+          <p className="min-w-full overflow-hidden relative shrink-0 text-[#191919] text-[14px] text-ellipsis tracking-[-0.07px] w-[min-content]" data-node-id="15:11264">
+            Chattogram Precision Engineering and Fabrication Works Ltd.
+          </p>
+          <p className="relative shrink-0 text-[#858585] text-[12px] tracking-[-0.06px]" data-node-id="15:11265">
+            Invoice CPE/2026/0457
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="15:11251">
+        <div className="content-stretch flex items-center justify-center px-[8px] py-[4px] relative shrink-0 w-full" data-node-id="15:11252">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] tracking-[-0.07px]" data-node-id="15:11253">
+            Note for the supplier*
+          </p>
+        </div>
+        <a className="bg-white border border-[#e0e0e0] border-solid content-stretch cursor-pointer flex gap-[8px] h-[102px] items-start p-[8px] relative rounded-[10px] shrink-0 w-full" data-node-id="15:11254">
+          <div className="relative shrink-0 size-[16px]" data-node-id="15:11255" data-name="note-01">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNote01} />
+          </div>
+          <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[normal] min-w-px not-italic relative text-[#858585] text-[14px] text-left tracking-[-0.07px]" data-node-id="15:11259">
+            Add note for the supplyer
+          </p>
+        </a>
+      </div>
+      <div className="content-stretch flex gap-[8px] items-center justify-end relative shrink-0 w-full" data-node-id="14:9697" data-name="Bulk actions">
+        <div className="bg-white border border-[#e0e0e0] border-solid content-stretch flex flex-[1_0_0] h-[36px] items-center justify-center min-w-px px-[16px] py-[8px] relative rounded-[10px]" data-node-id="14:9698">
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#191919] text-[14px] tracking-[-0.07px] whitespace-nowrap" data-node-id="14:9699">
+            Cancel
+          </p>
+        </div>
+        <div className="bg-[#191919] border border-[#191919] border-solid content-stretch flex flex-[1_0_0] h-[36px] items-center justify-center min-w-px px-[16px] py-[8px] relative rounded-[10px]" data-node-id="14:9700">
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[14px] text-white tracking-[-0.07px] whitespace-nowrap" data-node-id="14:9701">
+            Request
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
